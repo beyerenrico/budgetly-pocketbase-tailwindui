@@ -1,13 +1,21 @@
-<script>
+<script lang="ts">
 	import { AuthFormCard, FormInput } from '$lib/components';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
+	export let form: FormData;
+
+	$: ({ authProviders } = data);
 </script>
 
 <AuthFormCard
+	{form}
 	heading="Sign in to your account"
 	subheading="create a new one"
 	submitLabel="Sign in"
 	redirect="/auth/register"
 	showAuthProviders={true}
+	{authProviders}
 >
 	<FormInput label="Email address" id="email" type="email" required={true} />
 	<FormInput label="Password" id="password" type="password" required={true} />

@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { Icon } from '@steeze-ui/svelte-icon';
-	import { AppProfileButton } from '.';
+	import type { Admin, Record } from 'pocketbase';
+	import { AppAccountButton } from '.';
 
-	/**
-	 * @type {any[]}
-	 */
-	export let navigationElements;
+	export let user: Record | Admin | null;
+
+	export let navigationElements: any[];
 </script>
 
 <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
@@ -101,7 +101,7 @@
 				</nav>
 			</div>
 
-			<AppProfileButton />
+			<AppAccountButton {user} />
 		</div>
 
 		<div class="w-14 flex-shrink-0">

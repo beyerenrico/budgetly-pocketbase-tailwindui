@@ -1,43 +1,12 @@
-<script>
-	/**
-	 * @type {string}
-	 */
-	export let label;
-
-	/**
-	 * @type {string}
-	 */
-	export let id;
-
-	/**
-	 * @type {string}
-	 */
-	export let value = '';
-
-	/**
-	 * @type {string}
-	 */
-	export let placeholder = '';
-
-	/**
-	 * @type {string}
-	 */
-	export let type = 'text';
-
-	/**
-	 * @type {string}
-	 */
-	export let autocomplete = 'on';
-
-	/**
-	 * @type {boolean}
-	 */
-	export let required = false;
-
-	/**
-	 * @type {boolean}
-	 */
-	export let disabled = false;
+<script lang="ts">
+	export let label: string;
+	export let id: string;
+	export let value: string = '';
+	export let placeholder: string = '';
+	export let type: string = 'text';
+	export let autocomplete: string = 'on';
+	export let required: boolean = false;
+	export let disabled: boolean = false;
 </script>
 
 <div>

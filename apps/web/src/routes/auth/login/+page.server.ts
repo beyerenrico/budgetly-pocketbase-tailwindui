@@ -1,13 +1,17 @@
 import { redirect, type Actions } from '@sveltejs/kit';
+import type { PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ locals }) => {
+	const { authProviders } = await locals.pb.collection('users').listAuthMethods();
+
+	return {
+		authProviders
+	};
+};
 
 export const actions: Actions = {
-	default: async ({ locals, request, url }) => {
+	default: async ({ locals, request }) => {
 		const body = Object.fromEntries(await request.formData());
-		const provider = url.searchParams.get('provider');
-
-		if (provider) {
-			// login via auth provider
-		}
 
 		try {
 			await locals.pb

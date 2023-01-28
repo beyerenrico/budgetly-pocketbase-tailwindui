@@ -1,12 +1,12 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import { Icon } from '@steeze-ui/svelte-icon';
-	import { AppProfileButton } from '.';
+	import type { Admin, Record } from 'pocketbase';
+	import { AppAccountButton } from '.';
 
-	/**
-	 * @type {any}
-	 */
-	export let navigationElements;
+	export let user: Record | Admin | null;
+
+	export let navigationElements: any;
 </script>
 
 <!-- Static sidebar for desktop -->
@@ -42,6 +42,6 @@
 				{/each}
 			</nav>
 		</div>
-		<AppProfileButton />
+		<AppAccountButton {user} />
 	</div>
 </div>

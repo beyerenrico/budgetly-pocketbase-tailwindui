@@ -1,11 +1,12 @@
-<script>
+<script lang="ts">
 	import { FolderPlus } from '@steeze-ui/heroicons';
+	import type { IconSource } from '@steeze-ui/heroicons/types';
 	import { Icon } from '@steeze-ui/svelte-icon';
 
-	export let text = '';
-	export let href = '';
-	export let label = '';
-	export let icon = FolderPlus;
+	export let text: string = '';
+	export let href: string = '';
+	export let label: string = '';
+	export let icon: IconSource = FolderPlus;
 </script>
 
 <p class="mt-1 text-sm text-gray-500 pb-4">{text}</p>

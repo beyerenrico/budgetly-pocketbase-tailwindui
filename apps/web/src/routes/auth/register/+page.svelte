@@ -1,8 +1,11 @@
-<script>
+<script lang="ts">
 	import { AuthFormCard, FormInput } from '$lib/components';
+
+	export let form: FormData;
 </script>
 
 <AuthFormCard
+	{form}
 	heading="Register a new account"
 	subheading="sign in with your existing one"
 	submitLabel="Register"
@@ -25,7 +28,7 @@
 	/>
 	<FormInput
 		label="Confirm Password"
-		id="confirmPassword"
+		id="passwordConfirm"
 		type="password"
 		placeholder="Must have at least 8 characters"
 		required={true}

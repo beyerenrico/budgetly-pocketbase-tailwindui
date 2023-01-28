@@ -13,8 +13,7 @@
 
 <AppBreadcrumbs {breadcrumbElements} />
 
-<ContentWrapper>
-	<h2 class="text-lg font-medium text-gray-900">Planners</h2>
+<ContentWrapper headline="Planners">
 	<AppEmpty
 		text="You haven't created a planner yet. Get started by selecting a template or start from an empty project."
 		label="Create a new planner"

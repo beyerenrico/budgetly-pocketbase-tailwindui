@@ -1,49 +1,30 @@
-<script>
-	/**
-	 * @type {string}
-	 */
-	export let heading;
+<script lang="ts">
+	import { browser } from '$app/environment';
+	import { PUBLIC_OAUTH_CALLBACK_URL } from '$env/static/public';
+	import type { AuthProviderInfo } from 'pocketbase';
+	import { Alert } from '.';
 
-	/**
-	 * @type {string}
-	 */
-	export let subheading;
+	export let form: {
+		type: string;
+		message: string;
+	};
 
-	/**
-	 * @type {string}
-	 */
-	export let submitLabel;
+	export let heading: string;
+	export let subheading: string = '';
+	export let submitLabel: string;
+	export let redirect: string = '';
+	export let showAuthProviders: boolean = false;
+	export let authProviders: AuthProviderInfo[];
 
-	/**
-	 * @type {string}
-	 */
-	export let redirect;
-
-	/**
-	 * @type {boolean}
-	 */
-	export let showAuthProviders = false;
-
-	/**
-	 * @type {Record<string, unknown>[]}
-	 */
-	export let authProviders = [
-		{
-			label: 'Sign in with Facebook',
-			provider: 'facebook'
-		},
-		{
-			label: 'Sign in with GitHub',
-			provider: 'github'
-		},
-		{
-			label: 'Sign in with Google',
-			provider: 'google'
+	const setProviderCookie = (provider: AuthProviderInfo) => {
+		if (browser) {
+			document.cookie = `state=${provider.state}`;
+			document.cookie = `provider=${JSON.stringify(provider)}`;
 		}
-	];
+	};
 </script>
 
-<div class="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
+<div class="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-md">
 		<img
 			class="mx-auto h-12 w-auto"
@@ -53,10 +34,13 @@
 		<h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
 			{heading}
 		</h2>
-		<p class="mt-2 text-center text-sm text-gray-600">
-			Or
-			<a href={redirect} class="font-medium text-indigo-600 hover:text-indigo-500">{subheading}</a>
-		</p>
+		{#if subheading}
+			<p class="mt-2 text-center text-sm text-gray-600">
+				Or
+				<a href={redirect} class="font-medium text-indigo-600 hover:text-indigo-500">{subheading}</a
+				>
+			</p>
+		{/if}
 	</div>
 
 	<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -86,25 +70,22 @@
 					<div class="mt-6 grid grid-cols-3 gap-3">
 						{#each authProviders as element}
 							<div>
-								<button
-									type="submit"
-									formaction="?provider={element.provider}"
+								<a
+									on:click={() => setProviderCookie(element)}
+									href={element.authUrl + PUBLIC_OAUTH_CALLBACK_URL}
 									class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
 								>
-									<span class="sr-only">{element.label}</span>
-									<svg class="h-5 w-5" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-										<path
-											fill-rule="evenodd"
-											d="M20 10c0-5.523-4.477-10-10-10S0 4.477 0 10c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V10h2.54V7.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V10h2.773l-.443 2.89h-2.33v6.988C16.343 19.128 20 14.991 20 10z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-								</button>
+									<span class="sr-only">{element.name}</span>
+									{element.name}
+								</a>
 							</div>
 						{/each}
 					</div>
 				</form>
 			{/if}
 		</div>
+		{#if form?.type && form?.message}
+			<Alert type={form?.type}>{form?.message}</Alert>
+		{/if}
 	</div>
 </div>
