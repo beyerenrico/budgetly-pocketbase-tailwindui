@@ -26,7 +26,7 @@
 	];
 </script>
 
-<nav class="flex border-b border-gray-200 bg-white py-2 top-0 sticky" aria-label="Breadcrumb">
+<nav class="flex border-b border-gray-200 bg-white py-2 top-0 sticky z-10" aria-label="Breadcrumb">
 	<!-- svelte-ignore a11y-no-redundant-roles -->
 	<ol role="list" class="flex flex-grow w-full space-x-4 px-4 sm:px-6 lg:px-8">
 		<li class="flex">
