@@ -14,7 +14,7 @@
 	export let submitLabel: string;
 	export let redirect: string = '';
 	export let showAuthProviders: boolean = false;
-	export let authProviders: AuthProviderInfo[];
+	export let authProviders: AuthProviderInfo[] = [];
 
 	const setProviderCookie = (provider: AuthProviderInfo) => {
 		if (browser) {
