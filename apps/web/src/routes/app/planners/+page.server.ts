@@ -1,5 +1,5 @@
 import { serializeNonPOJOs } from '$lib/utils';
-import { error } from '@sveltejs/kit';
+import { error, redirect, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
@@ -14,5 +14,30 @@ export const load: PageServerLoad = async ({ locals }) => {
 	} catch (err: any) {
 		console.log(err);
 		// throw error(err.status, err.message)
+	}
+};
+
+export const actions: Actions = {
+	createPlanner: async ({ request, locals }) => {
+		console.log(request, locals);
+		if (!locals.user) {
+			locals.pb.authStore.clear();
+			throw redirect(303, '/auth/login');
+		}
+
+		let planner;
+
+		try {
+			planner = await locals.pb.collection('planners').create({
+				title: 'My new Planner',
+				description: 'Describe what your planner is all about',
+				user: locals.user.id
+			});
+		} catch (err) {
+			console.log(err);
+			throw error(err.status, err.message);
+		}
+
+		throw redirect(303, `/app/planners/${planner.id}`);
 	}
 };
