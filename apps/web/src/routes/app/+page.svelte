@@ -4,6 +4,7 @@
 
 <AppBreadcrumbs />
 
-<ContentWrapper headline="Dashboard">
-	<h1>This is an quick overview of your planners</h1>
-</ContentWrapper>
+<ContentWrapper
+	headline="Dashboard"
+	description="This is an quick overview of your planners, expenses, income and probably some charts and graphs"
+/>
