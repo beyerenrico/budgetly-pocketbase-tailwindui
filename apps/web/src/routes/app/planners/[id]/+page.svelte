@@ -1,12 +1,26 @@
 <script lang="ts">
-	import { AppBreadcrumbs, AppMenuDropdown, ContentWrapperEditable } from '$lib/components';
-	import AppPopover from '$lib/components/AppPopover.svelte';
-	import { MenuItem } from '@rgossiaux/svelte-headlessui';
-	import { EllipsisVertical, Scale, Trash, Wallet } from '@steeze-ui/heroicons';
-	import { Icon } from '@steeze-ui/svelte-icon';
 	import type { PageData } from './$types';
+	import { calendarView } from '$lib/stores';
+	import { MenuItem } from '@rgossiaux/svelte-headlessui';
+	import { Icon } from '@steeze-ui/svelte-icon';
+	import { EllipsisVertical, Scale, Trash, Wallet } from '@steeze-ui/heroicons';
+	import {
+		AppBreadcrumbs,
+		AppCalendarDayView,
+		AppCalendarMonthView,
+		AppCalendarWeekView,
+		AppCalendarYearView,
+		AppMenuDropdown,
+		ContentWrapperEditable
+	} from '$lib/components';
 
 	export let data: PageData;
+	let innerWidth = 0;
+	let currentView: string;
+
+	calendarView.subscribe((value) => {
+		currentView = value;
+	});
 
 	const breadcrumbElements = [
 		{
@@ -19,8 +33,17 @@
 		}
 	];
 
+	const calendarViews = {
+		day: AppCalendarDayView,
+		week: AppCalendarWeekView,
+		month: AppCalendarMonthView,
+		year: AppCalendarYearView
+	};
+
 	$: ({ planner } = data);
 </script>
+
+<svelte:window bind:innerWidth />
 
 <AppBreadcrumbs {breadcrumbElements} />
 
@@ -30,61 +53,7 @@
 	withAction={true}
 	actionLabel="Add"
 >
-	<div class="px-4 sm:px-6 lg:px-8">
-		<div class="mt-8 flex flex-col">
-			<div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
-				<div class="inline-block min-w-full py-2 align-middle">
-					<table class="min-w-full divide-y divide-gray-300">
-						<thead>
-							<tr>
-								<th
-									scope="col"
-									class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6 md:pl-0"
-									>Name</th
-								>
-								<th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-900"
-									>Title</th
-								>
-								<th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-900"
-									>Email</th
-								>
-								<th scope="col" class="py-3.5 px-3 text-left text-sm font-semibold text-gray-900"
-									>Role</th
-								>
-								<th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6 md:pr-0">
-									<span class="sr-only">Edit</span>
-								</th>
-							</tr>
-						</thead>
-						<tbody class="divide-y divide-gray-200">
-							<tr>
-								<td
-									class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6 md:pl-0"
-									>Lindsay Walton</td
-								>
-								<td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500"
-									>Front-end Developer</td
-								>
-								<td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500"
-									>lindsay.walton@example.com</td
-								>
-								<td class="whitespace-nowrap py-4 px-3 text-sm text-gray-500">Member</td>
-								<td
-									class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 md:pr-0"
-								>
-									<a href="#" class="text-indigo-600 hover:text-indigo-900"
-										>Edit<span class="sr-only">, Lindsay Walton</span></a
-									>
-								</td>
-							</tr>
-
-							<!-- More people... -->
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
+	<svelte:component this={calendarViews[currentView]} />
 	<svelte:fragment slot="action">
 		<div class="flex gap-2">
 			<AppMenuDropdown

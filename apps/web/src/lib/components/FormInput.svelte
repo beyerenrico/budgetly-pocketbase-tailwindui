@@ -9,7 +9,7 @@
 	export let disabled: boolean = false;
 </script>
 
-<div>
+<div class="w-full">
 	<label for={id} class="block text-sm font-medium text-gray-700">{label}</label>
 	<div class="mt-1">
 		<input

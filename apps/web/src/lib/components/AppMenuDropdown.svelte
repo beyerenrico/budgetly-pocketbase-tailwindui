@@ -1,24 +1,25 @@
 <script lang="ts">
 	import { Menu, MenuButton, MenuItem, MenuItems, Transition } from '@rgossiaux/svelte-headlessui';
-	import { ChevronDown } from '@steeze-ui/heroicons';
+	import { ChevronDown, EllipsisVertical } from '@steeze-ui/heroicons';
 	import { Icon } from '@steeze-ui/svelte-icon';
 
 	export let label: string = '';
 	export let buttonStyles: string = '';
 </script>
 
-<div class="w-auto text-right top-16">
+<div class="w-auto text-right flex items-center">
 	<Menu as="div" class="relative inline-block text-left">
 		<MenuButton
 			class={buttonStyles === ''
-				? 'inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'
+				? 'inline-flex justify-center w-full px-2 sm:px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75'
 				: buttonStyles}
 		>
 			<slot name="buttonContent">
 				{label}
 				<Icon
 					src={ChevronDown}
-					class="w-5 h-5 ml-2 -mr-1 text-violet-200 hover:text-violet-100"
+					theme="mini"
+					class="w-5 h-5 ml-2 -mr-1 text-gray-400"
 					aria-hidden="true"
 				/>
 			</slot>

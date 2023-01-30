@@ -7,9 +7,9 @@
 </script>
 
 <div class="py-6">
-	<div class="max-w-7xl px-4 sm:px-6 md:px-8">
+	<div class="px-4 sm:px-6 md:px-8">
 		{#if headline}
-			<div class="border-b border-gray-200 pb-3 mb-6">
+			<div class="border-b border-gray-200 pb-3 mb-6 relative z-20">
 				<div class="sm:flex sm:items-center sm:justify-between">
 					<div class="w-full">
 						<slot name="headline">

@@ -12,6 +12,7 @@ import AppDialog from './AppDialog.svelte';
 import AppEmpty from './AppEmpty.svelte';
 import AppLayoutOffCanvasCloser from './AppLayoutOffCanvasCloser.svelte';
 import AppLayoutOffCanvasMenu from './AppLayoutOffCanvasMenu.svelte';
+import AppLayoutOffCanvasOpener from './AppLayoutOffCanvasOpener.svelte';
 import AppLayoutSidebar from './AppLayoutSidebar.svelte';
 import AppMenuDropdown from './AppMenuDropdown.svelte';
 import AppPopover from './AppPopover.svelte';
@@ -36,6 +37,7 @@ export {
 	AppEmpty,
 	AppLayoutOffCanvasCloser,
 	AppLayoutOffCanvasMenu,
+	AppLayoutOffCanvasOpener,
 	AppLayoutSidebar,
 	AppMenuDropdown,
 	AppPopover,

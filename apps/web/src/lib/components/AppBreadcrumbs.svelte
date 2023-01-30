@@ -2,13 +2,15 @@
 	import { MenuItem } from '@rgossiaux/svelte-headlessui';
 	import {
 		ArrowLeftOnRectangle,
+		ChevronDown,
 		ChevronRight,
+		EllipsisVertical,
 		Home,
 		LockClosed,
 		UserCircle
 	} from '@steeze-ui/heroicons';
 	import { Icon } from '@steeze-ui/svelte-icon';
-	import { AppMenuDropdown } from '.';
+	import { AppLayoutOffCanvasOpener, AppMenuDropdown } from '.';
 
 	export let breadcrumbElements: any[] = [];
 
@@ -26,9 +28,13 @@
 	];
 </script>
 
-<nav class="flex border-b border-gray-200 bg-white py-2 top-0 sticky z-10" aria-label="Breadcrumb">
+<nav
+	class="flex justify-between border-b border-gray-200 bg-white md:py-2 top-0 sticky z-30"
+	aria-label="Breadcrumb"
+>
+	<AppLayoutOffCanvasOpener />
 	<!-- svelte-ignore a11y-no-redundant-roles -->
-	<ol role="list" class="flex flex-grow w-full space-x-4 px-4 sm:px-6 lg:px-8">
+	<ol role="list" class="flex flex-grow w-full sm:space-x-4 px-4 md:px-8">
 		<li class="flex">
 			<div class="flex items-center">
 				<a href="/app" class="text-gray-500 hover:text-gray-700">
@@ -42,15 +48,36 @@
 			<li class="flex">
 				<div class="flex items-center">
 					<Icon src={ChevronRight} theme="mini" class="h-5 w-5 flex-shrink-0 text-gray-400" />
-					<a href={element.href} class="ml-4 text-sm font-medium text-gray-500 hover:text-gray-700"
+					<a
+						href={element.href}
+						class="ml-2 sm:ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 max-w-max w-16 sm:w-full truncate"
 						>{element.title}</a
 					>
 				</div>
 			</li>
 		{/each}
 	</ol>
-	<div class="flex px-4 sm:px-6 lg:px-8">
+	<div class="flex flex-shrink-0 px-4 sm:px-6 lg:px-8">
 		<AppMenuDropdown label="Account">
+			<svelte:fragment slot="buttonContent">
+				<div class="hidden sm:inline-flex">
+					Account
+					<Icon
+						src={ChevronDown}
+						theme="mini"
+						class="w-5 h-5 ml-2 -mr-1 text-gray-400"
+						aria-hidden="true"
+					/>
+				</div>
+				<div class="inline-flex sm:hidden">
+					<Icon
+						src={EllipsisVertical}
+						theme="mini"
+						class="w-5 h-5 text-gray-400"
+						aria-hidden="true"
+					/>
+				</div>
+			</svelte:fragment>
 			<div class="px-1 py-1 ">
 				{#each dropdownElements as element}
 					<MenuItem let:active>

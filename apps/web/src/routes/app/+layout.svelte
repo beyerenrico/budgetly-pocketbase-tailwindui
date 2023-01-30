@@ -1,11 +1,7 @@
 <script lang="ts">
 	import type { LayoutData } from './$types';
 	import { navigationElements } from '$lib/constants';
-	import {
-		AppLayoutOffCanvasCloser,
-		AppLayoutOffCanvasMenu,
-		AppLayoutSidebar
-	} from '$lib/components';
+	import { AppLayoutOffCanvasMenu, AppLayoutSidebar } from '$lib/components';
 
 	export let data: LayoutData;
 
@@ -17,8 +13,7 @@
 
 	<AppLayoutSidebar {user} {navigationElements} />
 
-	<div class="flex flex-1 flex-col md:pl-64">
-		<AppLayoutOffCanvasCloser />
+	<div class="flex flex-1 flex-col md:pl-16 xl:pl-64">
 		<main class="flex-1">
 			<slot />
 		</main>
