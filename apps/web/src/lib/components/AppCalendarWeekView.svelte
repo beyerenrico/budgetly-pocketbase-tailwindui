@@ -1,110 +1,77 @@
-<script>
+<script lang="ts">
+	import { currentDate } from '$lib/stores';
+	import { classNames, getWeekdays } from '$lib/utils';
 	import { AppCalendarHeader } from '.';
+	import isoWeek from 'dayjs/plugin/isoWeek';
+	import dayjs, { type Dayjs } from 'dayjs';
+	import { daysOfWeek } from '$lib/constants';
+
+	dayjs.extend(isoWeek);
+
+	let currentDay: Dayjs;
+
+	currentDate.subscribe((value) => {
+		currentDay = value;
+	});
 </script>
 
-<div class="flex flex-col h-full border rounded-lg">
-	<AppCalendarHeader />
+<div class="flex flex-col h-0 min-h-[768px] overflow-hidden border rounded-lg">
+	<AppCalendarHeader manipulator="week" showMonth={true} />
 	<div class="flex flex-col flex-auto overflow-auto bg-white isolate">
-		<div style="width: 165%" class="flex flex-col flex-none max-w-full sm:max-w-none md:max-w-full">
+		<div
+			style="width: 165%"
+			class="flex flex-col flex-none max-w-full overflow-hidden sm:max-w-none md:max-w-full"
+		>
 			<div
 				class="sticky top-0 z-30 flex-none bg-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
 			>
 				<div class="grid grid-cols-7 text-sm leading-6 text-gray-500 sm:hidden">
-					<button type="button" class="flex flex-col items-center pt-2 pb-3"
-						>M <span
-							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
-							>10</span
-						></button
-					>
-					<button type="button" class="flex flex-col items-center pt-2 pb-3"
-						>T <span
-							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
-							>11</span
-						></button
-					>
-					<button type="button" class="flex flex-col items-center pt-2 pb-3"
-						>W <span
-							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-white bg-indigo-600 rounded-full"
-							>12</span
-						></button
-					>
-					<button type="button" class="flex flex-col items-center pt-2 pb-3"
-						>T <span
-							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
-							>13</span
-						></button
-					>
-					<button type="button" class="flex flex-col items-center pt-2 pb-3"
-						>F <span
-							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
-							>14</span
-						></button
-					>
-					<button type="button" class="flex flex-col items-center pt-2 pb-3"
-						>S <span
-							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
-							>15</span
-						></button
-					>
-					<button type="button" class="flex flex-col items-center pt-2 pb-3"
-						>S <span
-							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
-							>16</span
-						></button
-					>
+					{#each getWeekdays(currentDay) as day}
+						<button
+							on:click={() => currentDate.set(day)}
+							type="button"
+							class="flex flex-col items-center pt-2 pb-3"
+						>
+							{daysOfWeek[day.isoWeekday()].charAt(0)}
+							<span
+								class={classNames(
+									day.isSame(dayjs(), 'day') ? 'text-indigo-600' : 'text-gray-900',
+									day.isSame(currentDay, 'day') && 'bg-gray-900 text-white',
+									'flex items-center justify-center w-8 h-8 mt-1 font-semibold rounded-full'
+								)}
+							>
+								{day.format('DD')}
+							</span>
+						</button>
+					{/each}
 				</div>
 
 				<div
 					class="hidden grid-cols-7 -mr-px text-sm leading-6 text-gray-500 border-r border-gray-100 divide-x divide-gray-100 sm:grid"
 				>
 					<div class="col-end-1 w-14" />
-					<div class="flex items-center justify-center py-3">
-						<span
-							>Mon <span class="items-center justify-center font-semibold text-gray-900">10</span
-							></span
+
+					{#each getWeekdays(currentDay) as day}
+						<button
+							on:click={() => currentDate.set(day)}
+							type="button"
+							class="flex flex-col items-center pt-2 pb-3"
 						>
-					</div>
-					<div class="flex items-center justify-center py-3">
-						<span
-							>Tue <span class="items-center justify-center font-semibold text-gray-900">11</span
-							></span
-						>
-					</div>
-					<div class="flex items-center justify-center py-3">
-						<span class="flex items-baseline"
-							>Wed <span
-								class="ml-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
-								>12</span
-							></span
-						>
-					</div>
-					<div class="flex items-center justify-center py-3">
-						<span
-							>Thu <span class="items-center justify-center font-semibold text-gray-900">13</span
-							></span
-						>
-					</div>
-					<div class="flex items-center justify-center py-3">
-						<span
-							>Fri <span class="items-center justify-center font-semibold text-gray-900">14</span
-							></span
-						>
-					</div>
-					<div class="flex items-center justify-center py-3">
-						<span
-							>Sat <span class="items-center justify-center font-semibold text-gray-900">15</span
-							></span
-						>
-					</div>
-					<div class="flex items-center justify-center py-3">
-						<span
-							>Sun <span class="items-center justify-center font-semibold text-gray-900">16</span
-							></span
-						>
-					</div>
+							{daysOfWeek[day.isoWeekday()].slice(0, 3)}
+							<span
+								class={classNames(
+									day.isSame(dayjs(), 'day') ? 'text-indigo-600' : 'text-gray-900',
+									day.isSame(currentDay, 'day') && 'bg-gray-900 text-white',
+									'flex items-center justify-center w-8 h-8 mt-1 font-semibold rounded-full'
+								)}
+							>
+								{day.format('DD')}
+							</span>
+						</button>
+					{/each}
 				</div>
 			</div>
-			<div class="flex flex-auto">
+			<div class="flex flex-auto max-h-[680px] overflow-y-scroll rounded-lg">
 				<div class="sticky left-0 z-10 flex-none bg-white w-14 ring-1 ring-gray-100" />
 				<div class="grid flex-auto grid-cols-1 grid-rows-1">
 					<!-- Horizontal lines -->

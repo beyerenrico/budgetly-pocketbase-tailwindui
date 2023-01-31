@@ -10,7 +10,7 @@
 	<div class="px-4 sm:px-6 md:px-8">
 		{#if headline}
 			<div class="relative z-20 pb-3 mb-6 border-b border-gray-200">
-				<div class="sm:flex sm:items-center sm:justify-between">
+				<div class="flex items-center justify-between gap-4">
 					<div class="w-full">
 						<slot name="headline">
 							<h1 class="text-lg font-medium leading-6 text-gray-900">{headline}</h1>

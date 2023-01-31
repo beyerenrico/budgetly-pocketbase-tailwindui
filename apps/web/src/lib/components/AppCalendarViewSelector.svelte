@@ -2,31 +2,13 @@
 	import { MenuItem } from '@rgossiaux/svelte-headlessui';
 	import { AppMenuDropdown } from '.';
 	import { calendarView } from '$lib/stores';
+	import { views } from '$lib/constants';
 
 	let currentView: string;
 
 	calendarView.subscribe((value) => {
 		currentView = value;
 	});
-
-	const views = [
-		{
-			name: 'day',
-			label: 'Day'
-		},
-		{
-			name: 'week',
-			label: 'Week'
-		},
-		{
-			name: 'month',
-			label: 'Month'
-		},
-		{
-			name: 'year',
-			label: 'Year'
-		}
-	];
 </script>
 
 <AppMenuDropdown

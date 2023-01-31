@@ -3,7 +3,7 @@
 </script>
 
 <div class="flex flex-col h-full overflow-hidden border rounded-lg">
-	<AppCalendarHeader />
+	<AppCalendarHeader manipulator="day" />
 	<div class="isolate flex flex-auto overflow-hidden bg-white h-[768px]">
 		<div class="flex flex-col flex-auto overflow-auto">
 			<div
