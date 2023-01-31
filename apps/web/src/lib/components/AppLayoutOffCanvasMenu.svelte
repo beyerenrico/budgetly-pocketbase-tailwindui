@@ -44,7 +44,7 @@
 			leave="transition ease-in-out duration-300 transform"
 			leaveFrom="translate-x-0"
 			leaveTo="-translate-x-full"
-			class="relative flex w-full max-w-xs flex-1 flex-col bg-white pointer-events-auto"
+			class="relative flex flex-col flex-1 w-full max-w-xs bg-white pointer-events-auto"
 		>
 			<TransitionChild
 				enter="ease-in-out duration-300"
@@ -53,20 +53,20 @@
 				leave="ease-in-out duration-300"
 				leaveFrom="opacity-100"
 				leaveTo="opacity-0"
-				class="absolute top-0 right-0 -mr-12 pt-2"
+				class="absolute top-0 right-0 pt-2 -mr-12"
 			>
 				<AppLayoutOffCanvasCloser />
 			</TransitionChild>
 
-			<div class="h-0 flex-1 overflow-y-auto pt-5 pb-4">
-				<div class="flex flex-shrink-0 items-center px-4">
+			<div class="flex-1 h-0 pt-5 pb-4 overflow-y-auto">
+				<div class="flex items-center flex-shrink-0 px-4">
 					<img
-						class="h-8 w-auto"
+						class="w-auto h-8"
 						src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
 						alt="Your Company"
 					/>
 				</div>
-				<nav class="mt-5 space-y-1 px-2">
+				<nav class="px-2 mt-5 space-y-1">
 					{#each navigationElements as element}
 						<a
 							on:click={() => offCanvasMenuOpen.set(false)}
@@ -90,7 +90,7 @@
 			<AppAccountButton {user} />
 		</TransitionChild>
 
-		<div class="w-14 flex-shrink-0">
+		<div class="flex-shrink-0 w-14">
 			<!-- Force sidebar to shrink to fit close icon -->
 		</div>
 	</Transition>

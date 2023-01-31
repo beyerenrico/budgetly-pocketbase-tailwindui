@@ -64,7 +64,7 @@
 			<div class="space-y-6 sm:space-y-5">
 				<div>
 					<h3 class="text-lg font-medium leading-6 text-gray-900">Profile</h3>
-					<p class="mt-1 max-w-2xl text-sm text-gray-500">
+					<p class="max-w-2xl mt-1 text-sm text-gray-500">
 						This information will be displayed publicly so be careful what you share.
 					</p>
 				</div>
@@ -86,10 +86,10 @@
 						<label for="photo" class="block text-sm font-medium text-gray-700">Avatar</label>
 						<div class="mt-1 sm:col-span-2 sm:mt-0">
 							<div class="flex items-center">
-								<span class="h-12 w-12 overflow-hidden rounded-full bg-gray-100">
+								<span class="w-12 h-12 overflow-hidden bg-gray-100 rounded-full">
 									<img
 										id="avatar-preview"
-										class="inline-block h-12 w-12 rounded-full object-cover"
+										class="inline-block object-cover w-12 h-12 rounded-full"
 										src={user?.avatar
 											? getImageURL(user?.collectionId, user?.id, user?.avatar)
 											: `https://ui-avatars.com/api/?name=${user?.name}`}
@@ -98,7 +98,7 @@
 								</span>
 								<label
 									for="avatar"
-									class="cursor-pointer ml-5 rounded-md border border-gray-300 bg-white py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+									class="px-3 py-2 ml-5 text-sm font-medium leading-4 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm cursor-pointer hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 									>Change</label
 								>
 								<input
@@ -115,10 +115,10 @@
 				</div>
 			</div>
 
-			<div class="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
+			<div class="pt-8 space-y-6 sm:space-y-5 sm:pt-10">
 				<div>
 					<h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
-					<p class="mt-1 max-w-2xl text-sm text-gray-500">
+					<p class="max-w-2xl mt-1 text-sm text-gray-500">
 						Use a permanent address where you can receive mail.
 					</p>
 				</div>
@@ -142,10 +142,10 @@
 				</div>
 			</div>
 
-			<div class="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
+			<div class="pt-8 space-y-6 sm:space-y-5 sm:pt-10">
 				<div>
 					<h3 class="text-lg font-medium leading-6 text-gray-900">External auth providers</h3>
-					<p class="mt-1 max-w-2xl text-sm text-gray-500">
+					<p class="max-w-2xl mt-1 text-sm text-gray-500">
 						Use a permanent address where you can receive mail.
 					</p>
 				</div>
@@ -161,22 +161,22 @@
 											: 'hover:bg-gray-50'}"
 									>
 										<AppDialog>
-											<div class="w-full flex items-center py-4">
-												<div class="flex min-w-0 flex-1 items-center">
-													<div class="flex min-w-0 flex-1 px-4">
-														<p class="text-left text-sm font-medium text-gray-600 mr-4">
+											<div class="flex items-center w-full py-4">
+												<div class="flex items-center flex-1 min-w-0">
+													<div class="flex flex-1 min-w-0 px-4">
+														<p class="mr-4 text-sm font-medium text-left text-gray-600">
 															{element.name.toUpperCase()}
 														</p>
 														{#if linkedExternalAuths?.includes(element.name)}
-															<Icon src={CheckCircle} theme="mini" class="h-5 w-5 text-green-500" />
+															<Icon src={CheckCircle} theme="mini" class="w-5 h-5 text-green-500" />
 														{/if}
 													</div>
 												</div>
 												<div class="flex items-center px-4">
 													{#if linkedExternalAuths?.includes(element.name)}
-														<Icon src={Trash} theme="mini" class="h-5 w-5 text-gray-400" />
+														<Icon src={Trash} theme="mini" class="w-5 h-5 text-gray-400" />
 													{:else}
-														<Icon src={Plus} theme="mini" class="h-5 w-5 text-gray-400" />
+														<Icon src={Plus} theme="mini" class="w-5 h-5 text-gray-400" />
 													{/if}
 												</div>
 											</div>
@@ -227,17 +227,17 @@
 			</div>
 		</div>
 
-		<div class="space-y-6 pt-8 sm:space-y-5 sm:pt-10">
+		<div class="pt-8 space-y-6 sm:space-y-5 sm:pt-10">
 			<div>
 				<h3 class="text-lg font-medium leading-6 text-gray-900">Danger Zone</h3>
-				<p class="mt-1 max-w-2xl text-sm text-gray-500">
+				<p class="max-w-2xl mt-1 text-sm text-gray-500">
 					This action is permanent and cannot be reverted
 				</p>
 			</div>
 			<button
 				type="submit"
 				formaction="?/deleteAccount"
-				class="inline-flex justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+				class="inline-flex justify-center px-4 py-2 text-sm font-medium text-white bg-red-600 border border-transparent rounded-md shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
 				>Delete Account</button
 			>
 		</div>
@@ -246,7 +246,7 @@
 			<div class="flex justify-end">
 				<button
 					type="submit"
-					class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+					class="inline-flex justify-center px-4 py-2 ml-3 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 					>Save</button
 				>
 			</div>

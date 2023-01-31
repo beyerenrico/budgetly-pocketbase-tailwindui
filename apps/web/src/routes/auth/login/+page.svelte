@@ -26,9 +26,9 @@
 				id="remember-me"
 				name="remember-me"
 				type="checkbox"
-				class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+				class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"
 			/>
-			<label for="remember-me" class="ml-2 block text-sm text-gray-900">Remember me</label>
+			<label for="remember-me" class="block ml-2 text-sm text-gray-900">Remember me</label>
 		</div>
 
 		<div class="text-sm">

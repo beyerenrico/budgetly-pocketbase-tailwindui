@@ -17,7 +17,7 @@
 		<div class="flex max-w-lg rounded-md shadow-sm">
 			{#if prependSymbol}
 				<span
-					class="inline-flex items-center rounded-l-md border border-r-0 border-gray-300 bg-gray-50 px-3 text-gray-500 sm:text-sm"
+					class="inline-flex items-center px-3 text-gray-500 border border-r-0 border-gray-300 rounded-l-md bg-gray-50 sm:text-sm"
 					>{symbol}</span
 				>
 			{/if}

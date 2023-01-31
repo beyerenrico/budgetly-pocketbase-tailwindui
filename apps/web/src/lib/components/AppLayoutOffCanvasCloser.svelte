@@ -5,12 +5,12 @@
 <button
 	on:click={() => offCanvasMenuOpen.set(false)}
 	type="button"
-	class="ml-1 flex h-10 w-10 items-center justify-center rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+	class="flex items-center justify-center w-10 h-10 ml-1 rounded-full focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
 >
 	<span class="sr-only">Close sidebar</span>
 	<!-- Heroicon name: outline/x-mark -->
 	<svg
-		class="h-6 w-6 text-white"
+		class="w-6 h-6 text-white"
 		xmlns="http://www.w3.org/2000/svg"
 		fill="none"
 		viewBox="0 0 24 24"

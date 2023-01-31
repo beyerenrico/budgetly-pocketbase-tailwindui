@@ -9,7 +9,7 @@
 <div class="py-6">
 	<div class="px-4 sm:px-6 md:px-8">
 		{#if headline}
-			<div class="border-b border-gray-200 pb-3 mb-6 relative z-20">
+			<div class="relative z-20 pb-3 mb-6 border-b border-gray-200">
 				<div class="sm:flex sm:items-center sm:justify-between">
 					<div class="w-full">
 						<slot name="headline">
@@ -17,19 +17,19 @@
 						</slot>
 						{#if description}
 							<slot name="description">
-								<p class="mt-1 max-w-2xl text-sm text-gray-500">
+								<p class="max-w-2xl mt-1 text-sm text-gray-500">
 									{description}
 								</p>
 							</slot>
 						{/if}
 					</div>
 					{#if withAction}
-						<div class="mt-3 sm:mt-0 sm:ml-4 flex-shrink-0">
+						<div class="flex-shrink-0 mt-3 sm:mt-0 sm:ml-4">
 							<slot name="action">
 								<form {action} method="POST">
 									<button
 										type="submit"
-										class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+										class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 										>{actionLabel}</button
 									>
 								</form>

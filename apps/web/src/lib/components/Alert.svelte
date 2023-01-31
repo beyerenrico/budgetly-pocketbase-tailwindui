@@ -35,7 +35,7 @@
 		<div class="ml-3">
 			<p class="text-sm font-medium text-{types[type]}-800"><slot /></p>
 		</div>
-		<!-- <div class="ml-auto pl-3">
+		<!-- <div class="pl-3 ml-auto">
 			<div class="-mx-1.5 -my-1.5">
 				<button
 					type="button"
@@ -46,7 +46,7 @@
 					]}-600 focus:ring-offset-2 focus:ring-offset-{types[type]}-50"
 				>
 					<span class="sr-only">Dismiss</span>
-					<Icon src={XMark} theme="mini" class="h-5 w-5" />
+					<Icon src={XMark} theme="mini" class="w-5 h-5" />
 				</button>
 			</div>
 		</div> -->

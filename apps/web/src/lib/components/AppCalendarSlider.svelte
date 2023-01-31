@@ -51,7 +51,7 @@
 			class="-mr-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
 		>
 			<span class="sr-only">Previous month</span>
-			<Icon src={ChevronLeft} theme="mini" class="h-5 w-5" />
+			<Icon src={ChevronLeft} theme="mini" class="w-5 h-5" />
 		</button>
 		<div class="flex-auto font-semibold">{selectedDate.format('MMMM YYYY')}</div>
 		<button
@@ -60,10 +60,10 @@
 			class="-mr-1.5 flex flex-none items-center justify-center p-1.5 text-gray-400 hover:text-gray-500"
 		>
 			<span class="sr-only">Next month</span>
-			<Icon src={ChevronRight} theme="mini" class="h-5 w-5" />
+			<Icon src={ChevronRight} theme="mini" class="w-5 h-5" />
 		</button>
 	</div>
-	<div class="mt-6 grid grid-cols-7 text-xs leading-6 text-gray-500">
+	<div class="grid grid-cols-7 mt-6 text-xs leading-6 text-gray-500">
 		{#each ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] as element}
 			<div>
 				{element.charAt(0)}
@@ -72,7 +72,7 @@
 		{/each}
 	</div>
 	<div
-		class="isolate mt-2 grid grid-cols-7 gap-px rounded-lg bg-gray-200 text-sm shadow ring-1 ring-gray-200 overflow-hidden"
+		class="grid grid-cols-7 gap-px mt-2 overflow-hidden text-sm bg-gray-200 rounded-lg shadow isolate ring-1 ring-gray-200"
 	>
 		{#each getWeeks(selectedDate) as week}
 			{#each week as day}

@@ -2,16 +2,16 @@
 	import { offCanvasMenuOpen } from '$lib/stores';
 </script>
 
-<div class="sticky top-0 z-10 md:hidden border-r p-2">
+<div class="sticky top-0 z-10 p-2 border-r md:hidden">
 	<button
 		on:click={() => offCanvasMenuOpen.set(true)}
 		type="button"
-		class="inline-flex h-12 w-12 items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+		class="inline-flex items-center justify-center w-12 h-12 text-gray-500 rounded-md hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
 	>
 		<span class="sr-only">Open sidebar</span>
 		<!-- Heroicon name: outline/bars-3 -->
 		<svg
-			class="h-6 w-6"
+			class="w-6 h-6"
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
 			viewBox="0 0 24 24"

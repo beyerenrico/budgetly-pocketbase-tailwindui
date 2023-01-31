@@ -24,17 +24,17 @@
 </script>
 
 <nav class="bg-white shadow">
-	<div class="mx-auto px-4 sm:px-6 lg:px-8">
-		<div class="flex h-16 justify-between">
+	<div class="px-4 mx-auto sm:px-6 lg:px-8">
+		<div class="flex justify-between h-16">
 			<div class="flex">
-				<div class="flex flex-shrink-0 items-center">
+				<div class="flex items-center flex-shrink-0">
 					<img
-						class="block h-8 w-auto lg:hidden"
+						class="block w-auto h-8 lg:hidden"
 						src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
 						alt="Your Company"
 					/>
 					<img
-						class="hidden h-8 w-auto lg:block"
+						class="hidden w-auto h-8 lg:block"
 						src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
 						alt="Your Company"
 					/>
@@ -85,23 +85,23 @@
 						<div class="hidden sm:ml-6 sm:flex sm:space-x-2">
 							<a
 								href="/auth/login"
-								class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+								class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
 								>Login</a
 							>
 							<a
 								href="/auth/register"
-								class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+								class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-600 rounded-md hover:bg-gray-50 hover:text-gray-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
 								>Register</a
 							>
 						</div>
 					{/if}
 				</div>
 			</div>
-			<div class="-mr-2 flex items-center sm:hidden">
+			<div class="flex items-center -mr-2 sm:hidden">
 				<!-- Mobile menu button -->
 				<button
 					type="button"
-					class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+					class="inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
 					aria-controls="mobile-menu"
 					aria-expanded="false"
 				>
@@ -114,7 +114,7 @@
             Menu open: "hidden", Menu closed: "block"
           -->
 					<svg
-						class="block h-6 w-6"
+						class="block w-6 h-6"
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
@@ -136,7 +136,7 @@
             Menu open: "block", Menu closed: "hidden"
           -->
 					<svg
-						class="hidden h-6 w-6"
+						class="hidden w-6 h-6"
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"
@@ -153,34 +153,34 @@
 
 	<!-- Mobile menu, show/hide based on menu state. -->
 	<div class="sm:hidden" id="mobile-menu">
-		<div class="space-y-1 pt-2 pb-3">
+		<div class="pt-2 pb-3 space-y-1">
 			<!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
 			<a
 				href="#"
-				class="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
+				class="block py-2 pl-3 pr-4 text-base font-medium text-indigo-700 border-l-4 border-indigo-500 bg-indigo-50"
 				>Dashboard</a
 			>
 			<a
 				href="#"
-				class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+				class="block py-2 pl-3 pr-4 text-base font-medium text-gray-500 border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
 				>Team</a
 			>
 			<a
 				href="#"
-				class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+				class="block py-2 pl-3 pr-4 text-base font-medium text-gray-500 border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
 				>Projects</a
 			>
 			<a
 				href="#"
-				class="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
+				class="block py-2 pl-3 pr-4 text-base font-medium text-gray-500 border-l-4 border-transparent hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
 				>Calendar</a
 			>
 		</div>
-		<div class="border-t border-gray-200 pt-4 pb-3">
+		<div class="pt-4 pb-3 border-t border-gray-200">
 			<div class="flex items-center px-4">
 				<div class="flex-shrink-0">
 					<img
-						class="h-10 w-10 rounded-full"
+						class="w-10 h-10 rounded-full"
 						src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
 						alt=""
 					/>
@@ -191,12 +191,12 @@
 				</div>
 				<button
 					type="button"
-					class="ml-auto flex-shrink-0 rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+					class="flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 				>
 					<span class="sr-only">View notifications</span>
 					<!-- Heroicon name: outline/bell -->
 					<svg
-						class="h-6 w-6"
+						class="w-6 h-6"
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"
 						viewBox="0 0 24 24"

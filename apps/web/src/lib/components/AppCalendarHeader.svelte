@@ -2,7 +2,7 @@
 	import { AppCalendarViewSelector } from '.';
 </script>
 
-<header class="flex items-center justify-between border-b border-gray-200 py-4 px-6 relative z-10">
+<header class="relative z-10 flex items-center justify-between px-6 py-4 border-b border-gray-200">
 	<h1 class="text-lg font-semibold text-gray-900">
 		<time datetime="2022">2022</time>
 	</h1>
@@ -10,12 +10,12 @@
 		<div class="flex items-center rounded-md shadow-sm md:items-stretch">
 			<button
 				type="button"
-				class="flex items-center justify-center rounded-l-md border border-r-0 border-gray-300 bg-white py-2 pl-3 pr-4 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50"
+				class="flex items-center justify-center py-2 pl-3 pr-4 text-gray-400 bg-white border border-r-0 border-gray-300 rounded-l-md hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50"
 			>
 				<span class="sr-only">Previous month</span>
 				<!-- Heroicon name: mini/chevron-left -->
 				<svg
-					class="h-5 w-5"
+					class="w-5 h-5"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
 					fill="currentColor"
@@ -33,15 +33,15 @@
 				class="hidden border-t border-b border-gray-300 bg-white px-3.5 text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:relative md:block"
 				>Today</button
 			>
-			<span class="relative -mx-px h-5 w-px bg-gray-300 md:hidden" />
+			<span class="relative w-px h-5 -mx-px bg-gray-300 md:hidden" />
 			<button
 				type="button"
-				class="flex items-center justify-center rounded-r-md border border-l-0 border-gray-300 bg-white py-2 pl-4 pr-3 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50"
+				class="flex items-center justify-center py-2 pl-4 pr-3 text-gray-400 bg-white border border-l-0 border-gray-300 rounded-r-md hover:text-gray-500 focus:relative md:w-9 md:px-2 md:hover:bg-gray-50"
 			>
 				<span class="sr-only">Next month</span>
 				<!-- Heroicon name: mini/chevron-right -->
 				<svg
-					class="h-5 w-5"
+					class="w-5 h-5"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
 					fill="currentColor"
@@ -59,17 +59,17 @@
 			<div class="relative">
 				<AppCalendarViewSelector />
 			</div>
-			<div class="ml-6 h-6 w-px bg-gray-300" />
+			<div class="w-px h-6 ml-6 bg-gray-300" />
 			<button
 				type="button"
-				class="ml-6 rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+				class="px-4 py-2 ml-6 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 				>Add element</button
 			>
 		</div>
 		<div class="relative ml-6 md:hidden">
 			<button
 				type="button"
-				class="-mx-2 flex items-center rounded-full border border-transparent p-2 text-gray-400 hover:text-gray-500"
+				class="flex items-center p-2 -mx-2 text-gray-400 border border-transparent rounded-full hover:text-gray-500"
 				id="menu-0-button"
 				aria-expanded="false"
 				aria-haspopup="true"
@@ -77,7 +77,7 @@
 				<span class="sr-only">Open menu</span>
 				<!-- Heroicon name: mini/ellipsis-horizontal -->
 				<svg
-					class="h-5 w-5"
+					class="w-5 h-5"
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
 					fill="currentColor"
@@ -100,7 +100,7 @@
             To: "transform opacity-0 scale-95"
         -->
 			<div
-				class="absolute right-0 z-10 mt-3 w-36 origin-top-right divide-y divide-gray-100 overflow-hidden rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+				class="absolute right-0 z-10 mt-3 overflow-hidden origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5 focus:outline-none"
 				role="menu"
 				aria-orientation="vertical"
 				aria-labelledby="menu-0-button"
@@ -110,7 +110,7 @@
 					<!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
 					<a
 						href="#"
-						class="text-gray-700 block px-4 py-2 text-sm"
+						class="block px-4 py-2 text-sm text-gray-700"
 						role="menuitem"
 						tabindex="-1"
 						id="menu-0-item-0">Create event</a
@@ -119,7 +119,7 @@
 				<div class="py-1" role="none">
 					<a
 						href="#"
-						class="text-gray-700 block px-4 py-2 text-sm"
+						class="block px-4 py-2 text-sm text-gray-700"
 						role="menuitem"
 						tabindex="-1"
 						id="menu-0-item-1">Go to today</a
@@ -128,28 +128,28 @@
 				<div class="py-1" role="none">
 					<a
 						href="#"
-						class="text-gray-700 block px-4 py-2 text-sm"
+						class="block px-4 py-2 text-sm text-gray-700"
 						role="menuitem"
 						tabindex="-1"
 						id="menu-0-item-2">Day view</a
 					>
 					<a
 						href="#"
-						class="text-gray-700 block px-4 py-2 text-sm"
+						class="block px-4 py-2 text-sm text-gray-700"
 						role="menuitem"
 						tabindex="-1"
 						id="menu-0-item-3">Week view</a
 					>
 					<a
 						href="#"
-						class="text-gray-700 block px-4 py-2 text-sm"
+						class="block px-4 py-2 text-sm text-gray-700"
 						role="menuitem"
 						tabindex="-1"
 						id="menu-0-item-4">Month view</a
 					>
 					<a
 						href="#"
-						class="text-gray-700 block px-4 py-2 text-sm"
+						class="block px-4 py-2 text-sm text-gray-700"
 						role="menuitem"
 						tabindex="-1"
 						id="menu-0-item-5">Year view</a

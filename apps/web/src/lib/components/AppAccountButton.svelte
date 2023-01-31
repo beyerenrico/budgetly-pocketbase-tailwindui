@@ -6,16 +6,16 @@
 	export let user: Record | Admin | null;
 </script>
 
-<div class="flex flex-shrink-0 border-t border-gray-200 p-4">
+<div class="flex flex-shrink-0 p-4 border-t border-gray-200">
 	<a
 		href="/app/settings/account"
-		class="group block w-full flex-shrink-0"
+		class="flex-shrink-0 block w-full group"
 		on:click={() => offCanvasMenuOpen.set(false)}
 	>
 		<div class="flex items-center">
 			<div>
 				<img
-					class="inline-block h-9 w-9 md:h-7 md:w-7 xl:h-9 xl:w-9 rounded-full object-cover"
+					class="inline-block object-cover rounded-full h-9 w-9 md:h-7 md:w-7 xl:h-9 xl:w-9"
 					src={user?.avatar
 						? getImageURL(user?.collectionId, user?.id, user?.avatar)
 						: `https://ui-avatars.com/api/?name=${user?.name}`}

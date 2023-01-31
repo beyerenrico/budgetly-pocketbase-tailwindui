@@ -39,7 +39,7 @@
 			<input
 				type="text"
 				name="headline"
-				class="block text-lg max-w-2xl font-medium leading-6 text-gray-900 p-0 bg-transparent border-none w-full"
+				class="block w-full max-w-2xl p-0 text-lg font-medium leading-6 text-gray-900 bg-transparent border-none"
 				value={headline}
 				on:blur={() => headlineForm.submit()}
 				disabled={loading}
@@ -57,7 +57,7 @@
 				<input
 					type="text"
 					name="description"
-					class="block mt-1 max-w-2xl text-sm text-gray-500 p-0 bg-transparent border-none w-full"
+					class="block w-full max-w-2xl p-0 mt-1 text-sm text-gray-500 bg-transparent border-none"
 					value={description}
 					on:blur={() => descriptionForm.submit()}
 					disabled={loading}
@@ -73,7 +73,7 @@
 			<form {action} method="POST">
 				<button
 					type="submit"
-					class="inline-flex items-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+					class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 					>{actionLabel}</button
 				>
 			</form>

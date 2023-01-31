@@ -40,18 +40,18 @@
 					<li>
 						<a href="/app/planners/{element.id}" class="block hover:bg-gray-50">
 							<div class="flex items-center px-4 py-4 sm:px-6">
-								<div class="flex min-w-0 flex-1 items-center">
-									<div class="min-w-0 flex-1 px-4 md:grid md:grid-cols-2 md:gap-4">
+								<div class="flex items-center flex-1 min-w-0">
+									<div class="flex-1 min-w-0 px-4 md:grid md:grid-cols-2 md:gap-4">
 										<div>
 											<p class="text-sm font-medium text-gray-600">{element.title}</p>
-											<p class="truncate text-sm font-normal text-gray-400">
+											<p class="text-sm font-normal text-gray-400 truncate">
 												{element.description}
 											</p>
 										</div>
 									</div>
 								</div>
 								<div>
-									<Icon src={ChevronRight} theme="mini" class="h-5 w-5 text-gray-400" />
+									<Icon src={ChevronRight} theme="mini" class="w-5 h-5 text-gray-400" />
 								</div>
 							</div>
 						</a>

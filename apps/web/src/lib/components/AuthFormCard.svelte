@@ -27,15 +27,15 @@
 <div class="flex flex-col justify-center py-12 sm:px-6 lg:px-8">
 	<div class="sm:mx-auto sm:w-full sm:max-w-md">
 		<img
-			class="mx-auto h-12 w-auto"
+			class="w-auto h-12 mx-auto"
 			src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
 			alt="Your Company"
 		/>
-		<h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
+		<h2 class="mt-6 text-3xl font-bold tracking-tight text-center text-gray-900">
 			{heading}
 		</h2>
 		{#if subheading}
-			<p class="mt-2 text-center text-sm text-gray-600">
+			<p class="mt-2 text-sm text-center text-gray-600">
 				Or
 				<a href={redirect} class="font-medium text-indigo-600 hover:text-indigo-500">{subheading}</a
 				>
@@ -44,14 +44,14 @@
 	</div>
 
 	<div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-		<div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+		<div class="px-4 py-8 bg-white shadow sm:rounded-lg sm:px-10">
 			<form class="space-y-4" method="POST">
 				<slot />
 
 				<div>
 					<button
 						type="submit"
-						class="flex w-full justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+						class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 						>{submitLabel}</button
 					>
 				</div>
@@ -63,17 +63,17 @@
 							<div class="w-full border-t border-gray-300" />
 						</div>
 						<div class="relative flex justify-center text-sm">
-							<span class="bg-white px-2 text-gray-500">Or continue with</span>
+							<span class="px-2 text-gray-500 bg-white">Or continue with</span>
 						</div>
 					</div>
 
-					<div class="mt-6 grid grid-cols-3 gap-3">
+					<div class="grid grid-cols-3 gap-3 mt-6">
 						{#each authProviders as element}
 							<div>
 								<a
 									on:click={() => setProviderCookie(element)}
 									href={element.authUrl + PUBLIC_OAUTH_CALLBACK_URL}
-									class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium text-gray-500 shadow-sm hover:bg-gray-50"
+									class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50"
 								>
 									<span class="sr-only">{element.name}</span>
 									{element.name}

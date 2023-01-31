@@ -9,13 +9,13 @@
 	export let icon: IconSource = FolderPlus;
 </script>
 
-<p class="mt-1 text-sm text-gray-500 pb-4">{text}</p>
+<p class="pb-4 mt-1 text-sm text-gray-500">{text}</p>
 <form {action} method="POST">
 	<button
 		type="submit"
-		class="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+		class="relative block w-full p-12 text-center border-2 border-gray-300 border-dashed rounded-lg hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 	>
-		<Icon src={icon} class="mx-auto h-12 w-12 text-gray-400" />
-		<span class="mt-2 block text-sm font-medium text-gray-900">{label}</span>
+		<Icon src={icon} class="w-12 h-12 mx-auto text-gray-400" />
+		<span class="block mt-2 text-sm font-medium text-gray-900">{label}</span>
 	</button>
 </form>

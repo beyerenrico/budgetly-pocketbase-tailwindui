@@ -2,60 +2,60 @@
 	import { AppCalendarHeader } from '.';
 </script>
 
-<div class="flex h-full flex-col border rounded-lg">
+<div class="flex flex-col h-full border rounded-lg">
 	<AppCalendarHeader />
-	<div class="isolate flex flex-auto flex-col overflow-auto bg-white">
-		<div style="width: 165%" class="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full">
+	<div class="flex flex-col flex-auto overflow-auto bg-white isolate">
+		<div style="width: 165%" class="flex flex-col flex-none max-w-full sm:max-w-none md:max-w-full">
 			<div
 				class="sticky top-0 z-30 flex-none bg-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
 			>
 				<div class="grid grid-cols-7 text-sm leading-6 text-gray-500 sm:hidden">
 					<button type="button" class="flex flex-col items-center pt-2 pb-3"
 						>M <span
-							class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900"
+							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
 							>10</span
 						></button
 					>
 					<button type="button" class="flex flex-col items-center pt-2 pb-3"
 						>T <span
-							class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900"
+							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
 							>11</span
 						></button
 					>
 					<button type="button" class="flex flex-col items-center pt-2 pb-3"
 						>W <span
-							class="mt-1 flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
+							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-white bg-indigo-600 rounded-full"
 							>12</span
 						></button
 					>
 					<button type="button" class="flex flex-col items-center pt-2 pb-3"
 						>T <span
-							class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900"
+							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
 							>13</span
 						></button
 					>
 					<button type="button" class="flex flex-col items-center pt-2 pb-3"
 						>F <span
-							class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900"
+							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
 							>14</span
 						></button
 					>
 					<button type="button" class="flex flex-col items-center pt-2 pb-3"
 						>S <span
-							class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900"
+							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
 							>15</span
 						></button
 					>
 					<button type="button" class="flex flex-col items-center pt-2 pb-3"
 						>S <span
-							class="mt-1 flex h-8 w-8 items-center justify-center font-semibold text-gray-900"
+							class="flex items-center justify-center w-8 h-8 mt-1 font-semibold text-gray-900"
 							>16</span
 						></button
 					>
 				</div>
 
 				<div
-					class="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-gray-100 text-sm leading-6 text-gray-500 sm:grid"
+					class="hidden grid-cols-7 -mr-px text-sm leading-6 text-gray-500 border-r border-gray-100 divide-x divide-gray-100 sm:grid"
 				>
 					<div class="col-end-1 w-14" />
 					<div class="flex items-center justify-center py-3">
@@ -105,11 +105,11 @@
 				</div>
 			</div>
 			<div class="flex flex-auto">
-				<div class="sticky left-0 z-10 w-14 flex-none bg-white ring-1 ring-gray-100" />
+				<div class="sticky left-0 z-10 flex-none bg-white w-14 ring-1 ring-gray-100" />
 				<div class="grid flex-auto grid-cols-1 grid-rows-1">
 					<!-- Horizontal lines -->
 					<div
-						class="col-start-1 col-end-2 row-start-1 grid divide-y divide-gray-100"
+						class="grid col-start-1 col-end-2 row-start-1 divide-y divide-gray-100"
 						style="grid-template-rows: repeat(48, minmax(3.5rem, 1fr))"
 					>
 						<div class="row-end-1 h-7" />
@@ -309,7 +309,7 @@
 
 					<!-- Vertical lines -->
 					<div
-						class="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-gray-100 sm:grid sm:grid-cols-7"
+						class="hidden grid-cols-7 col-start-1 col-end-2 grid-rows-1 row-start-1 divide-x divide-gray-100 sm:grid sm:grid-cols-7"
 					>
 						<div class="col-start-1 row-span-full" />
 						<div class="col-start-2 row-span-full" />
@@ -318,18 +318,18 @@
 						<div class="col-start-5 row-span-full" />
 						<div class="col-start-6 row-span-full" />
 						<div class="col-start-7 row-span-full" />
-						<div class="col-start-8 row-span-full w-8" />
+						<div class="w-8 col-start-8 row-span-full" />
 					</div>
 
 					<!-- Events -->
 					<ol
-						class="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8"
+						class="grid grid-cols-1 col-start-1 col-end-2 row-start-1 sm:grid-cols-7 sm:pr-8"
 						style="grid-template-rows: 1.75rem repeat(288, minmax(0, 1fr)) auto"
 					>
-						<li class="relative mt-px flex sm:col-start-3" style="grid-row: 74 / span 12">
+						<li class="relative flex mt-px sm:col-start-3" style="grid-row: 74 / span 12">
 							<a
 								href="#"
-								class="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100"
+								class="absolute flex flex-col p-2 overflow-y-auto text-xs leading-5 rounded-lg group inset-1 bg-blue-50 hover:bg-blue-100"
 							>
 								<p class="order-1 font-semibold text-blue-700">Breakfast</p>
 								<p class="text-blue-500 group-hover:text-blue-700">
@@ -337,10 +337,10 @@
 								</p>
 							</a>
 						</li>
-						<li class="relative mt-px flex sm:col-start-3" style="grid-row: 92 / span 30">
+						<li class="relative flex mt-px sm:col-start-3" style="grid-row: 92 / span 30">
 							<a
 								href="#"
-								class="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-pink-50 p-2 text-xs leading-5 hover:bg-pink-100"
+								class="absolute flex flex-col p-2 overflow-y-auto text-xs leading-5 rounded-lg group inset-1 bg-pink-50 hover:bg-pink-100"
 							>
 								<p class="order-1 font-semibold text-pink-700">Flight to Paris</p>
 								<p class="text-pink-500 group-hover:text-pink-700">
@@ -349,12 +349,12 @@
 							</a>
 						</li>
 						<li
-							class="relative mt-px hidden sm:col-start-6 sm:flex"
+							class="relative hidden mt-px sm:col-start-6 sm:flex"
 							style="grid-row: 122 / span 24"
 						>
 							<a
 								href="#"
-								class="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-gray-100 p-2 text-xs leading-5 hover:bg-gray-200"
+								class="absolute flex flex-col p-2 overflow-y-auto text-xs leading-5 bg-gray-100 rounded-lg group inset-1 hover:bg-gray-200"
 							>
 								<p class="order-1 font-semibold text-gray-700">
 									Meeting with design team at Disney

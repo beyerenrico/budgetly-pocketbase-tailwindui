@@ -29,16 +29,16 @@
 </script>
 
 <nav
-	class="flex justify-between border-b border-gray-200 bg-white md:py-2 top-0 sticky z-30"
+	class="sticky top-0 z-30 flex justify-between bg-white border-b border-gray-200 md:py-2"
 	aria-label="Breadcrumb"
 >
 	<AppLayoutOffCanvasOpener />
 	<!-- svelte-ignore a11y-no-redundant-roles -->
-	<ol role="list" class="flex flex-grow w-full sm:space-x-4 px-4 md:px-8">
+	<ol role="list" class="flex flex-grow w-full px-4 sm:space-x-4 md:px-8">
 		<li class="flex">
 			<div class="flex items-center">
 				<a href="/app" class="text-gray-500 hover:text-gray-700">
-					<Icon src={Home} theme="mini" class="h-5 w-5 flex-shrink-0" />
+					<Icon src={Home} theme="mini" class="flex-shrink-0 w-5 h-5" />
 					<span class="sr-only">Home</span>
 				</a>
 			</div>
@@ -47,10 +47,10 @@
 		{#each breadcrumbElements as element}
 			<li class="flex">
 				<div class="flex items-center">
-					<Icon src={ChevronRight} theme="mini" class="h-5 w-5 flex-shrink-0 text-gray-400" />
+					<Icon src={ChevronRight} theme="mini" class="flex-shrink-0 w-5 h-5 text-gray-400" />
 					<a
 						href={element.href}
-						class="ml-2 sm:ml-4 text-sm font-medium text-gray-500 hover:text-gray-700 max-w-max w-16 sm:w-full truncate"
+						class="w-16 ml-2 text-sm font-medium text-gray-500 truncate sm:ml-4 hover:text-gray-700 max-w-max sm:w-full"
 						>{element.title}</a
 					>
 				</div>

@@ -7,7 +7,7 @@
 	export let buttonStyles: string = '';
 </script>
 
-<div class="w-auto text-right flex items-center">
+<div class="flex items-center w-auto text-right">
 	<Menu as="div" class="relative inline-block text-left">
 		<MenuButton
 			class={buttonStyles === ''

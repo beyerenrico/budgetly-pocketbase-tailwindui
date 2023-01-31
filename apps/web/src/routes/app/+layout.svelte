@@ -13,7 +13,7 @@
 
 	<AppLayoutSidebar {user} {navigationElements} />
 
-	<div class="flex flex-1 flex-col md:pl-16 xl:pl-64">
+	<div class="flex flex-col flex-1 md:pl-16 xl:pl-64">
 		<main class="flex-1">
 			<slot />
 		</main>
