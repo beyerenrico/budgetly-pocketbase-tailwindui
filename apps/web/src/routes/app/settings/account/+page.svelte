@@ -58,13 +58,13 @@
 		method="POST"
 		action="?/updateAccount"
 		enctype="multipart/form-data"
-		class="space-y-8 divide-y divide-gray-200"
+		class="max-w-4xl space-y-8 divide-y divide-gray-200"
 	>
 		<div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
 			<div class="space-y-6 sm:space-y-5">
 				<div>
 					<h3 class="text-lg font-medium leading-6 text-gray-900">Profile</h3>
-					<p class="max-w-2xl mt-1 text-sm text-gray-500">
+					<p class="mt-1 text-sm text-gray-500">
 						This information will be displayed publicly so be careful what you share.
 					</p>
 				</div>
@@ -81,7 +81,7 @@
 					/>
 
 					<div
-						class="sm:grid sm:grid-cols-3 sm:items-center sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
+						class="sm:grid sm:grid-cols-2 sm:items-center sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5"
 					>
 						<label for="photo" class="block text-sm font-medium text-gray-700">Avatar</label>
 						<div class="mt-1 sm:col-span-2 sm:mt-0">
@@ -145,12 +145,12 @@
 			<div class="pt-8 space-y-6 sm:space-y-5 sm:pt-10">
 				<div>
 					<h3 class="text-lg font-medium leading-6 text-gray-900">External auth providers</h3>
-					<p class="max-w-2xl mt-1 text-sm text-gray-500">
+					<p class="max-w-xl mt-1 text-sm text-gray-500">
 						Use a permanent address where you can receive mail.
 					</p>
 				</div>
 				{#if availableExternalAuths}
-					<div class="md:grid md:grid-cols-3">
+					<div class="md:grid md:grid-cols-2">
 						<div class="overflow-hidden shadow sm:rounded-md md:col-span-2">
 							<!-- svelte-ignore a11y-no-redundant-roles -->
 							<ul role="list" class="divide-y divide-gray-200">

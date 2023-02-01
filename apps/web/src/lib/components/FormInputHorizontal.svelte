@@ -11,10 +11,10 @@
 	export let symbol: string = '';
 </script>
 
-<div class="sm:grid sm:grid-cols-3 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
+<div class="sm:grid sm:grid-cols-2 sm:items-start sm:gap-4 sm:border-t sm:border-gray-200 sm:pt-5">
 	<label for={id} class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2">{label}</label>
 	<div class="mt-1 sm:mt-0">
-		<div class="flex max-w-lg rounded-md shadow-sm">
+		<div class="flex rounded-md shadow-sm">
 			{#if prependSymbol}
 				<span
 					class="inline-flex items-center px-3 text-gray-500 border border-r-0 border-gray-300 rounded-l-md bg-gray-50 sm:text-sm"

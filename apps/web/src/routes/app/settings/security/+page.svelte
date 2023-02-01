@@ -22,7 +22,11 @@
 <AppBreadcrumbs {breadcrumbElements} />
 
 <ContentWrapper>
-	<form method="POST" enctype="multipart/form-data" class="space-y-8 divide-y divide-gray-200">
+	<form
+		method="POST"
+		enctype="multipart/form-data"
+		class="max-w-4xl space-y-8 divide-y divide-gray-200"
+	>
 		<div class="space-y-8 divide-y divide-gray-200 sm:space-y-5">
 			<div class="space-y-6 sm:space-y-5">
 				<div>
