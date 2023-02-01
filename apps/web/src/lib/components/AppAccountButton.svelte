@@ -6,7 +6,7 @@
 	export let user: Record | Admin | null;
 </script>
 
-<div class="flex flex-shrink-0 p-4 border-t border-gray-200">
+<div class="flex flex-shrink-0 p-4 bg-white border-t border-gray-200">
 	<a
 		href="/app/settings/account"
 		class="flex-shrink-0 block w-full group"
