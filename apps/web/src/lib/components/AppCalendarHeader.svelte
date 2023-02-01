@@ -24,7 +24,9 @@
 	});
 </script>
 
-<header class="relative z-10 flex items-center justify-between px-6 py-4 border-b border-gray-200">
+<header
+	class="relative z-10 flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200 rounded-t-lg"
+>
 	<h1 class="text-lg font-semibold text-gray-900">
 		<time datetime={showMonth ? currentYear.format('MMMM YYYY') : currentYear.format('YYYY')}
 			>{showMonth ? currentYear.format('MMMM YYYY') : currentYear.format('YYYY')}</time
