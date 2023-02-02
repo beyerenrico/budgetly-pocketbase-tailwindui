@@ -99,6 +99,7 @@
 				<MenuItem let:active>
 					<form action="/auth/logout" method="POST">
 						<button
+							type="submit"
 							class="{active
 								? 'text-gray-900 hover:bg-gray-50'
 								: 'text-gray-600 hover:text-gray-900'} group flex rounded-md items-center w-full px-2 py-2 text-sm"

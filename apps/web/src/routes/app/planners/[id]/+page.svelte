@@ -107,6 +107,7 @@
 	withAction={true}
 	actionLabel="Add"
 >
+	<h3 class="text-lg font-medium mb-4">Calendar</h3>
 	<svelte:component this={calendarViews[currentView]} />
 	<svelte:fragment slot="action">
 		<div class="flex justify-end gap-2">
