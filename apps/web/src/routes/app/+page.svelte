@@ -1,5 +1,8 @@
 <script>
 	import { AppBreadcrumbs, ContentWrapper } from '$lib/components';
+	import { currentPlanner } from '$lib/stores';
+
+	currentPlanner.set(undefined);
 </script>
 
 <AppBreadcrumbs />

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { AppBreadcrumbs, AppEmpty, ContentWrapper } from '$lib/components';
+	import { currentPlanner } from '$lib/stores';
 	import { ChevronRight, ListBullet } from '@steeze-ui/heroicons';
 	import { Icon } from '@steeze-ui/svelte-icon';
 	import type { PageData } from './$types';
@@ -12,6 +13,8 @@
 			href: '/app/planners'
 		}
 	];
+
+	currentPlanner.set(undefined);
 
 	$: ({ planners } = data);
 </script>
@@ -33,7 +36,7 @@
 			icon={ListBullet}
 		/>
 	{:else}
-		<div class="overflow-hidden bg-white shadow sm:rounded-md">
+		<div class="overflow-hidden bg-white shadow sm:rounded-md max-w-2xl">
 			<!-- svelte-ignore a11y-no-redundant-roles -->
 			<ul role="list" class="divide-y divide-gray-200">
 				{#each planners as element}

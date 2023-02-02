@@ -19,7 +19,6 @@
 				on:click={() => {
 					plannerSlideOverOpen.set(true);
 					plannerSlideOverType.set('expense');
-					currentPlanner.set(planner.id);
 				}}
 				type="button"
 				class="{active
@@ -39,7 +38,6 @@
 				on:click={() => {
 					plannerSlideOverOpen.set(true);
 					plannerSlideOverType.set('income');
-					currentPlanner.set(planner.id);
 				}}
 				type="button"
 				class="{active
