@@ -3,6 +3,7 @@
 	import { AppMenuDropdown } from '.';
 	import { calendarView } from '$lib/stores';
 	import { views } from '$lib/constants';
+	import { captilizeFirstLetter } from '$lib/utils';
 
 	let currentView: string;
 
@@ -12,7 +13,7 @@
 </script>
 
 <AppMenuDropdown
-	label="{currentView.charAt(0).toUpperCase() + currentView.slice(1)} view"
+	label="{captilizeFirstLetter(currentView)} view"
 	buttonStyles="flex items-center rounded-md border border-gray-300 bg-white py-2 pl-3 pr-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
 >
 	<div class="px-1 py-1">

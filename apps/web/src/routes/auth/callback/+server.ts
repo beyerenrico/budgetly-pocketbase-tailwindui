@@ -10,8 +10,6 @@ export const GET: RequestHandler = async ({ locals, url, cookies }: RequestEvent
 	const state = query.get('state');
 	const code = query.get('code');
 
-	console.log(url);
-
 	const authMethods = await locals.pb.collection('users').listAuthMethods();
 	if (!authMethods?.authProviders) {
 		console.log('authy providers');

@@ -84,3 +84,7 @@ export const getMonths = (date: Dayjs) => {
 export const classNames = (...classes: any[]) => {
 	return classes.filter(Boolean).join(' ');
 };
+
+export const captilizeFirstLetter = (string: string) => {
+	return string.charAt(0).toUpperCase() + string.slice(1);
+};

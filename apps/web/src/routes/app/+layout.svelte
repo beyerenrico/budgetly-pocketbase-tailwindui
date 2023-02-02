@@ -10,7 +10,6 @@
 
 <div>
 	<AppLayoutOffCanvasMenu {user} {navigationElements} />
-
 	<AppLayoutSidebar {user} {navigationElements} />
 
 	<div class="flex flex-col flex-1 md:pl-16 xl:pl-64">

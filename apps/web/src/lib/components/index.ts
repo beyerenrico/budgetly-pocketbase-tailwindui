@@ -16,11 +16,14 @@ import AppLayoutOffCanvasOpener from './AppLayoutOffCanvasOpener.svelte';
 import AppLayoutSidebar from './AppLayoutSidebar.svelte';
 import AppMenuDropdown from './AppMenuDropdown.svelte';
 import AppPopover from './AppPopover.svelte';
+import AppSlideOver from './AppSlideOver.svelte';
 import AuthFormCard from './AuthFormCard.svelte';
 import ContentWrapper from './ContentWrapper.svelte';
 import ContentWrapperEditable from './ContentWrapperEditable.svelte';
 import FormInput from './FormInput.svelte';
 import FormInputHorizontal from './FormInputHorizontal.svelte';
+import FormListBox from './FormListBox.svelte';
+import FormSelect from './FormSelect.svelte';
 
 export {
 	Alert,
@@ -39,11 +42,14 @@ export {
 	AppLayoutOffCanvasMenu,
 	AppLayoutOffCanvasOpener,
 	AppLayoutSidebar,
+	FormListBox,
 	AppMenuDropdown,
 	AppPopover,
+	AppSlideOver,
 	AuthFormCard,
 	ContentWrapper,
 	ContentWrapperEditable,
 	FormInput,
-	FormInputHorizontal
+	FormInputHorizontal,
+	FormSelect
 };

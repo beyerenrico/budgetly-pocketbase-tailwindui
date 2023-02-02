@@ -1,25 +1,49 @@
 <script lang="ts">
-	import type { PageData } from './$types';
-	import { calendarView } from '$lib/stores';
-	import { MenuItem } from '@rgossiaux/svelte-headlessui';
-	import { Icon } from '@steeze-ui/svelte-icon';
-	import { EllipsisVertical, Scale, Trash, Wallet } from '@steeze-ui/heroicons';
+	import DropdownActions from './DropdownActions.svelte';
+	import { browser } from '$app/environment';
+	import type { SubmitFunction } from '$app/forms';
+	import { PUBLIC_POCKETBASE_URL } from '$env/static/public';
 	import {
 		AppBreadcrumbs,
 		AppCalendarDayView,
 		AppCalendarMonthView,
 		AppCalendarWeekView,
 		AppCalendarYearView,
-		AppMenuDropdown,
+		AppSlideOver,
 		ContentWrapperEditable
 	} from '$lib/components';
+	import {
+		calendarView,
+		categorySlideOverOpen,
+		plannerSlideOverOpen,
+		plannerSlideOverType,
+		recentlyCreatedCategory
+	} from '$lib/stores';
+	import { captilizeFirstLetter } from '$lib/utils';
+	import PocketBase, { Record } from 'pocketbase';
+	import type { PageData } from './$types';
+	import CategoryForm from './CategoryForm.svelte';
+	import ExpenseForm from './ExpenseForm.svelte';
+	import IncomeForm from './IncomeForm.svelte';
 
+	export let form: unknown;
 	export let data: PageData;
+	let loading = false;
 	let innerWidth = 0;
 	let currentView: string;
+	let currentType: 'expense' | 'income';
+	let currentCategory: Record['id'] | undefined;
 
 	calendarView.subscribe((value) => {
 		currentView = value;
+	});
+
+	plannerSlideOverType.subscribe((value) => {
+		currentType = value;
+	});
+
+	recentlyCreatedCategory.subscribe((value) => {
+		currentCategory = value?.id ?? undefined;
 	});
 
 	const breadcrumbElements = [
@@ -33,14 +57,44 @@
 		}
 	];
 
-	const calendarViews: Record<string, any> = {
+	const calendarViews: {
+		[key: string]:
+			| typeof AppCalendarDayView
+			| typeof AppCalendarWeekView
+			| typeof AppCalendarMonthView
+			| typeof AppCalendarYearView;
+	} = {
 		day: AppCalendarDayView,
 		week: AppCalendarWeekView,
 		month: AppCalendarMonthView,
 		year: AppCalendarYearView
 	};
 
-	$: ({ planner } = data);
+	$: ({ planner, categories } = data);
+
+	if (browser) {
+		const pb = new PocketBase(PUBLIC_POCKETBASE_URL || 'http://localhost:8090');
+		pb.collection('categories').subscribe('*', function (e) {
+			categories.push(e.record);
+		});
+	}
+
+	const enhancePlannerSlideOver: SubmitFunction = () => {
+		loading = true;
+		return async ({ result, update }) => {
+			switch (result.type) {
+				case 'success':
+					await update();
+					break;
+				case 'error':
+					break;
+				default:
+					await update();
+			}
+
+			loading = false;
+		};
+	};
 </script>
 
 <svelte:window bind:innerWidth />
@@ -56,71 +110,26 @@
 	<svelte:component this={calendarViews[currentView]} />
 	<svelte:fragment slot="action">
 		<div class="flex justify-end gap-2">
-			<AppMenuDropdown
-				label="Add"
-				buttonStyles="inline-flex justify-center w-full px-4 py-2 items-center rounded-md border border-transparent bg-indigo-600 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-			>
-				<div class="px-1 py-1">
-					<MenuItem let:active>
-						<form action="/auth/logout" method="POST">
-							<button
-								class="{active
-									? 'text-gray-900 hover:bg-gray-50'
-									: 'text-gray-600 hover:text-gray-900'} group flex rounded-md items-center w-full px-2 py-2 text-sm"
-							>
-								<Icon
-									src={Scale}
-									theme="mini"
-									class="w-4 h-4 mr-2 {active ? 'text-gray-500' : 'text-gray-400'}"
-								/>
-								Expense
-							</button>
-						</form>
-					</MenuItem>
-					<MenuItem let:active>
-						<form action="/auth/logout" method="POST">
-							<button
-								class="{active
-									? 'text-gray-900 hover:bg-gray-50'
-									: 'text-gray-600 hover:text-gray-900'} group flex rounded-md items-center w-full px-2 py-2 text-sm"
-							>
-								<Icon
-									src={Wallet}
-									theme="mini"
-									class="w-4 h-4 mr-2 {active ? 'text-gray-500' : 'text-gray-400'}"
-								/>
-								Income
-							</button>
-						</form>
-					</MenuItem>
-				</div>
-			</AppMenuDropdown>
-			<AppMenuDropdown
-				buttonStyles="inline-flex justify-center w-full px-2 py-2 items-center rounded-md border border-transparent text-sm font-medium text-gray-900 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
-			>
-				<div class="px-1 py-1">
-					<MenuItem let:active>
-						<form action="?/deletePlanner" method="POST">
-							<button
-								class="{active
-									? 'text-gray-900 hover:bg-gray-50'
-									: 'text-gray-600 hover:text-gray-900'} group flex rounded-md items-center w-full px-2 py-2 text-sm"
-							>
-								<Icon
-									src={Trash}
-									theme="mini"
-									class="w-4 h-4 mr-2 {active ? 'text-gray-500' : 'text-gray-400'}"
-								/>
-								Delete
-							</button>
-							<input type="hidden" name="id" value={planner.id} />
-						</form>
-					</MenuItem>
-				</div>
-				<svelte:fragment slot="buttonContent">
-					<Icon src={EllipsisVertical} class="w-5 h-5" />
-				</svelte:fragment>
-			</AppMenuDropdown>
+			<DropdownActions {planner} />
 		</div>
 	</svelte:fragment>
 </ContentWrapperEditable>
+
+<AppSlideOver
+	storeElement={plannerSlideOverOpen}
+	headline="New {captilizeFirstLetter(currentType)}"
+	enhancementFunction={enhancePlannerSlideOver}
+>
+	{#if currentType === 'expense'}
+		<ExpenseForm {categories} selectedCategory={form?.category?.id} />
+	{:else if currentType === 'income'}
+		<IncomeForm {categories} selectedCategory={form?.category?.id} />
+	{/if}
+</AppSlideOver>
+<AppSlideOver
+	storeElement={categorySlideOverOpen}
+	headline="New category"
+	action="?/createCategory"
+>
+	<CategoryForm />
+</AppSlideOver>
