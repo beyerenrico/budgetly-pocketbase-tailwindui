@@ -39,6 +39,8 @@
 				</div>
 			</div>
 		{/if}
-		<slot>I am empty</slot>
+		<slot>
+			<em>Pretty empty...</em>
+		</slot>
 	</div>
 </div>
