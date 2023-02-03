@@ -19,7 +19,7 @@ const createDateStore = () => {
 };
 
 export const currentDate = createDateStore();
-export const calendarView = writable<'day' | 'week' | 'month' | 'year'>('month');
+export const calendarView = writable<'day' | 'week' | 'month' | 'year'>('year');
 export const currentPlanner = writable<string | undefined>(undefined);
 export const offCanvasMenuOpen = writable<boolean>(false);
 export const plannerSlideOverOpen = writable<boolean>(false);

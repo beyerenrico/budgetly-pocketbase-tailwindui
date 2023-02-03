@@ -2,10 +2,13 @@
 	import dayjs, { Dayjs } from 'dayjs';
 	import { Icon } from '@steeze-ui/svelte-icon';
 	import { ChevronLeft, ChevronRight } from '@steeze-ui/heroicons';
-	import { currentDate } from '$lib/stores';
+	import { calendarView, currentDate } from '$lib/stores';
 	import { classNames, getWeeks } from '$lib/utils';
+	import type { Record } from 'pocketbase';
 
 	let currentDay: Dayjs;
+	export let allExpenses: Record[];
+	export let allIncomes: Record[];
 
 	currentDate.subscribe((value) => {
 		currentDay = value;
@@ -49,7 +52,10 @@
 					type="button"
 					class="py-2 hover:bg-gray-100 focus:z-10 
 						{!day.isSame(currentDay, 'month') ? 'bg-gray-50 text-gray-400' : 'bg-white text-gray-900'}"
-					on:click={() => currentDate.set(day)}
+					on:click={() => {
+						currentDate.set(day);
+						calendarView.set('day');
+					}}
 				>
 					<time
 						datetime={day.format('YYYY-MM-DD')}
@@ -59,6 +65,14 @@
 							'mx-auto flex h-7 w-7 items-center justify-center rounded-full'
 						)}>{day.format('D')}</time
 					>
+					<div class="w-full flex justify-center gap-1">
+						{#if allExpenses.filter((expense) => day.isSame(dayjs(expense.date), 'day')).length}
+							<span class="mt-2 rounded-full h-[6px] w-[6px] bg-red-300" />
+						{/if}
+						{#if allIncomes.filter((income) => day.isSame(dayjs(income.date), 'day')).length}
+							<span class="mt-2 rounded-full h-[6px] w-[6px] bg-green-300" />
+						{/if}
+					</div>
 				</button>
 			{/each}
 		{/each}

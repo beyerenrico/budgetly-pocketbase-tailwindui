@@ -3,6 +3,7 @@ import AppAccountButton from './AppAccountButton.svelte';
 import AppBreadcrumbs from './AppBreadcrumbs.svelte';
 import AppCalendarDayView from './AppCalendarDayView.svelte';
 import AppCalendarHeader from './AppCalendarHeader.svelte';
+import AppCalendarListItem from './AppCalendarListItem.svelte';
 import AppCalendarMonthView from './AppCalendarMonthView.svelte';
 import AppCalendarSlider from './AppCalendarSlider.svelte';
 import AppCalendarViewSelector from './AppCalendarViewSelector.svelte';
@@ -31,6 +32,7 @@ export {
 	AppBreadcrumbs,
 	AppCalendarDayView,
 	AppCalendarHeader,
+	AppCalendarListItem,
 	AppCalendarMonthView,
 	AppCalendarSlider,
 	AppCalendarViewSelector,

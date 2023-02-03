@@ -9,6 +9,7 @@
 	import { AppCalendarViewSelector, AppMenuDropdown } from '.';
 
 	export let manipulator: ManipulateType;
+	export let showDay: boolean = false;
 	export let showMonth: boolean = false;
 
 	let currentYear: Dayjs;
@@ -28,8 +29,17 @@
 	class="relative z-10 flex items-center justify-between px-6 py-4 bg-white border-b border-gray-200 rounded-t-lg"
 >
 	<h1 class="text-lg font-semibold text-gray-900">
-		<time datetime={showMonth ? currentYear.format('MMMM YYYY') : currentYear.format('YYYY')}
-			>{showMonth ? currentYear.format('MMMM YYYY') : currentYear.format('YYYY')}</time
+		<time
+			datetime={showDay
+				? currentYear.format('D. MMMM YYYY')
+				: showMonth
+				? currentYear.format('MMMM YYYY')
+				: currentYear.format('YYYY')}
+			>{showDay
+				? currentYear.format('dddd, D. MMMM YYYY')
+				: showMonth
+				? currentYear.format('MMMM YYYY')
+				: currentYear.format('YYYY')}</time
 		>
 	</h1>
 	<div class="flex items-center">

@@ -1,8 +1,14 @@
 <script lang="ts">
 	import dayjs, { type Dayjs } from 'dayjs';
-	import { currentDate } from '$lib/stores';
+	import { calendarView, currentDate } from '$lib/stores';
 	import { classNames, getMonths, getWeeks } from '$lib/utils';
 	import { AppCalendarHeader, AppCalendarSlider } from '.';
+	import type { Record } from 'pocketbase';
+
+	export let expenses: Record[];
+	export let incomes: Record[];
+	export let allExpenses: Record[];
+	export let allIncomes: Record[];
 
 	let currentDay: Dayjs;
 
@@ -35,13 +41,16 @@
 					{#each getWeeks(month) as week}
 						{#each week as day}
 							<button
-								on:click={() => currentDate.set(day)}
+								on:click={() => {
+									currentDate.set(day);
+									calendarView.set('day');
+								}}
 								type="button"
 								class={classNames(
 									!day.isSame(month, 'month')
 										? 'bg-gray-50 text-gray-400'
 										: 'bg-white text-gray-900',
-									'py-2 hover:bg-gray-100 focus:z-10'
+									'py-2 hover:bg-gray-100 focus:z-10 relative'
 								)}
 							>
 								<time
@@ -56,6 +65,14 @@
 										'mx-auto flex h-7 w-7 items-center justify-center rounded-full'
 									)}>{day.format('D')}</time
 								>
+								<div class="w-full flex justify-start gap-1 absolute bottom-[2px] left-[2px]">
+									{#if allExpenses.filter( (expense) => day.isSame(dayjs(expense.date), 'day') ).length}
+										<span class="mt-2 rounded-full h-[4px] w-[4px] bg-red-300" />
+									{/if}
+									{#if allIncomes.filter((income) => day.isSame(dayjs(income.date), 'day')).length}
+										<span class="mt-2 rounded-full h-[4px] w-[4px] bg-green-300" />
+									{/if}
+								</div>
 							</button>
 						{/each}
 					{/each}
@@ -63,7 +80,7 @@
 			</div>
 		{/each}
 		<div class="md:hidden pt-4">
-			<AppCalendarSlider />
+			<AppCalendarSlider {allExpenses} {allIncomes} />
 		</div>
 	</div>
 </div>

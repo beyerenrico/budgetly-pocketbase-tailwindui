@@ -21,10 +21,10 @@ const views: {
 		name: 'day',
 		label: 'Day'
 	},
-	{
-		name: 'week',
-		label: 'Week'
-	},
+	// {
+	// 	name: 'week',
+	// 	label: 'Week'
+	// },
 	{
 		name: 'month',
 		label: 'Month'

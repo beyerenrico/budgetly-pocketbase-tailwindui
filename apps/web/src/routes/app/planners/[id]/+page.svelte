@@ -15,6 +15,7 @@
 	import {
 		calendarView,
 		categorySlideOverOpen,
+		currentDate,
 		plannerSlideOverOpen,
 		plannerSlideOverType,
 		recentlyCreatedCategory
@@ -25,14 +26,22 @@
 	import CategoryForm from './CategoryForm.svelte';
 	import ExpenseForm from './ExpenseForm.svelte';
 	import IncomeForm from './IncomeForm.svelte';
+	import dayjs from 'dayjs';
 
 	export let form: unknown;
 	export let data: PageData;
+	let expenses: Record[] = [];
+	let incomes: Record[] = [];
 	let loading = false;
 	let innerWidth = 0;
+	let currentDay: string;
 	let currentView: string;
 	let currentType: 'expense' | 'income';
 	let currentCategory: Record['id'] | undefined;
+
+	currentDate.subscribe((value) => {
+		currentDay = dayjs(value).format('YYYY-MM-DD');
+	});
 
 	calendarView.subscribe((value) => {
 		currentView = value;
@@ -70,12 +79,31 @@
 		year: AppCalendarYearView
 	};
 
-	$: ({ planner, categories } = data);
+	$: ({ planner, categories, allExpenses, allIncomes } = data);
 
 	if (browser) {
 		const pb = new PocketBase(PUBLIC_POCKETBASE_URL || 'http://localhost:8090');
+
 		pb.collection('categories').subscribe('*', function (e) {
 			categories.push(e.record);
+		});
+
+		currentDate.subscribe((value) => {
+			pb.collection('expenses')
+				.getFullList()
+				.then((records) => {
+					expenses = records.filter((record) => {
+						return dayjs(record.date).format('YYYY-MM-DD') === dayjs(value).format('YYYY-MM-DD');
+					});
+				});
+
+			pb.collection('incomes')
+				.getFullList()
+				.then((records) => {
+					incomes = records.filter((record) => {
+						return dayjs(record.date).format('YYYY-MM-DD') === dayjs(value).format('YYYY-MM-DD');
+					});
+				});
 		});
 	}
 
@@ -108,7 +136,13 @@
 	actionLabel="Add"
 >
 	<h3 class="text-lg font-medium mb-4">Calendar</h3>
-	<svelte:component this={calendarViews[currentView]} />
+	<svelte:component
+		this={calendarViews[currentView]}
+		{expenses}
+		{incomes}
+		{allExpenses}
+		{allIncomes}
+	/>
 	<svelte:fragment slot="action">
 		<div class="flex justify-end gap-2">
 			<DropdownActions {planner} />
