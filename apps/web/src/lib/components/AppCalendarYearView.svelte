@@ -23,7 +23,7 @@
 		class="grid grid-cols-1 gap-4 px-6 pb-6 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 bg-white rounded-b-lg"
 	>
 		{#each getMonths(currentDay) as month}
-			<div class="pt-8 text-center hidden md:block">
+			<div class="pt-8 text-center">
 				<div class="flex items-center text-center text-gray-900">
 					<div class="flex-auto font-semibold">{month.format('MMMM')}</div>
 				</div>
@@ -79,8 +79,5 @@
 				</div>
 			</div>
 		{/each}
-		<div class="md:hidden pt-4">
-			<AppCalendarSlider {allExpenses} {allIncomes} />
-		</div>
 	</div>
 </div>
