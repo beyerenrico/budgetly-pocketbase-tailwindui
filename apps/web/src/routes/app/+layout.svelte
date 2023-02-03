@@ -5,6 +5,7 @@
 	import { currentPlanner } from '$lib/stores';
 	import { ArchiveBox, Calendar, Scale, Wallet } from '@steeze-ui/heroicons';
 	import type { IconSource } from '@steeze-ui/svelte-icon/types';
+	import { Table } from '@steeze-ui/tabler-icons';
 
 	export let data: LayoutData;
 
@@ -42,6 +43,11 @@
 			title: 'Income',
 			href: `/app/planners/${plannerId}/income`,
 			icon: Wallet
+		},
+		{
+			title: 'Summary',
+			href: `/app/planners/${plannerId}/summary`,
+			icon: Table
 		}
 	];
 </script>
