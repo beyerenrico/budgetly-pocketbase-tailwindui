@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { enhance, type SubmitFunction } from '$app/forms';
-	import { plannerSlideOverOpen } from '$lib/stores';
 	import { Transition, TransitionChild } from '@rgossiaux/svelte-headlessui';
 	import { XMark } from '@steeze-ui/heroicons';
 	import { Icon } from '@steeze-ui/svelte-icon';
@@ -8,9 +7,10 @@
 
 	export let action: string = '';
 	export let method: string = 'POST';
-	export let enhancementFunction: SubmitFunction = () => {};
 	export let headline: string;
 	export let storeElement: Writable<boolean>;
+	export let enhancementFunction: SubmitFunction = () => {};
+
 	let open: boolean;
 
 	storeElement.subscribe((value) => {
@@ -89,6 +89,7 @@
 									Cancel
 								</button>
 								<button
+									on:click={() => storeElement.set(false)}
 									type="submit"
 									class="inline-flex justify-center px-4 py-2 ml-4 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 								>
