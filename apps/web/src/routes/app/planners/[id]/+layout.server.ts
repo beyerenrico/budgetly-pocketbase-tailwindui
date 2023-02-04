@@ -16,12 +16,14 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
 
 		const expenses = await locals.pb.collection('expenses').getFullList(200, {
 			filter: `planner = "${params.id}"`,
-			sort: 'date'
+			sort: 'date',
+			expand: 'category'
 		});
 
 		const incomes = await locals.pb.collection('incomes').getFullList(200, {
 			filter: `planner = "${params.id}"`,
-			sort: 'date'
+			sort: 'date',
+			expand: 'category'
 		});
 
 		return {
