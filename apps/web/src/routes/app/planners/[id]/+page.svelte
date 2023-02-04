@@ -1,43 +1,27 @@
 <script lang="ts">
+	import PocketBase from 'pocketbase';
 	import DropdownActions from './DropdownActions.svelte';
-	import { browser } from '$app/environment';
-	import type { SubmitFunction } from '$app/forms';
-	import { PUBLIC_POCKETBASE_URL } from '$env/static/public';
 	import {
 		AppBreadcrumbs,
 		AppCalendarDayView,
 		AppCalendarMonthView,
 		AppCalendarWeekView,
 		AppCalendarYearView,
-		AppSlideOver,
 		ContentWrapperEditable
 	} from '$lib/components';
-	import {
-		calendarView,
-		categorySlideOverOpen,
-		currentDate,
-		plannerSlideOverOpen,
-		plannerSlideOverType,
-		recentlyCreatedCategory
-	} from '$lib/stores';
-	import { captilizeFirstLetter } from '$lib/utils';
-	import PocketBase, { Record } from 'pocketbase';
+	import { calendarView, currentDate } from '$lib/stores';
 	import type { PageData } from './$types';
-	import CategoryForm from './CategoryForm.svelte';
-	import ExpenseForm from './ExpenseForm.svelte';
-	import IncomeForm from './IncomeForm.svelte';
 	import dayjs from 'dayjs';
+	import type { Record } from 'pocketbase';
+	import { browser } from '$app/environment';
+	import { PUBLIC_POCKETBASE_URL } from '$env/static/public';
 
-	export let form: unknown;
 	export let data: PageData;
 	let expenses: Record[] = [];
 	let incomes: Record[] = [];
-	let loading = false;
 	let innerWidth = 0;
 	let currentDay: string;
 	let currentView: string;
-	let currentType: 'expense' | 'income';
-	let currentCategory: Record['id'] | undefined;
 
 	currentDate.subscribe((value) => {
 		currentDay = dayjs(value).format('YYYY-MM-DD');
@@ -45,14 +29,6 @@
 
 	calendarView.subscribe((value) => {
 		currentView = value;
-	});
-
-	plannerSlideOverType.subscribe((value) => {
-		currentType = value;
-	});
-
-	recentlyCreatedCategory.subscribe((value) => {
-		currentCategory = value?.id ?? undefined;
 	});
 
 	const breadcrumbElements = [
@@ -79,7 +55,7 @@
 		year: AppCalendarYearView
 	};
 
-	$: ({ planner, categories, allExpenses, allIncomes } = data);
+	$: ({ categories, planner, allExpenses, allIncomes } = data);
 
 	if (browser) {
 		const pb = new PocketBase(PUBLIC_POCKETBASE_URL || 'http://localhost:8090');
@@ -106,23 +82,6 @@
 				});
 		});
 	}
-
-	const enhancePlannerSlideOver: SubmitFunction = () => {
-		loading = true;
-		return async ({ result, update }) => {
-			switch (result.type) {
-				case 'success':
-					await update();
-					break;
-				case 'error':
-					break;
-				default:
-					await update();
-			}
-
-			loading = false;
-		};
-	};
 </script>
 
 <svelte:window bind:innerWidth />
@@ -149,22 +108,3 @@
 		</div>
 	</svelte:fragment>
 </ContentWrapperEditable>
-
-<AppSlideOver
-	storeElement={plannerSlideOverOpen}
-	headline="New {captilizeFirstLetter(currentType)}"
-	enhancementFunction={enhancePlannerSlideOver}
->
-	{#if currentType === 'expense'}
-		<ExpenseForm {categories} selectedCategory={form?.category?.id} />
-	{:else if currentType === 'income'}
-		<IncomeForm {categories} selectedCategory={form?.category?.id} />
-	{/if}
-</AppSlideOver>
-<AppSlideOver
-	storeElement={categorySlideOverOpen}
-	headline="New category"
-	action="?/createCategory"
->
-	<CategoryForm />
-</AppSlideOver>
