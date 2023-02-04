@@ -18,6 +18,13 @@ import AppLayoutSidebar from './AppLayoutSidebar.svelte';
 import AppMenuDropdown from './AppMenuDropdown.svelte';
 import AppPopover from './AppPopover.svelte';
 import AppSlideOver from './AppSlideOver.svelte';
+import AppTable from './AppTable.svelte';
+import AppTableHeader from './AppTableHeader.svelte';
+import AppTableHeaderAction from './AppTableHeaderAction.svelte';
+import AppTableHeaderLeading from './AppTableHeaderLeading.svelte';
+import AppTableRow from './AppTableRow.svelte';
+import AppTableRowAction from './AppTableRowAction.svelte';
+import AppTableRowLeading from './AppTableRowLeading.svelte';
 import AuthFormCard from './AuthFormCard.svelte';
 import ContentWrapper from './ContentWrapper.svelte';
 import ContentWrapperEditable from './ContentWrapperEditable.svelte';
@@ -48,6 +55,13 @@ export {
 	AppMenuDropdown,
 	AppPopover,
 	AppSlideOver,
+	AppTable,
+	AppTableHeader,
+	AppTableHeaderAction,
+	AppTableHeaderLeading,
+	AppTableRow,
+	AppTableRowAction,
+	AppTableRowLeading,
 	AuthFormCard,
 	ContentWrapper,
 	ContentWrapperEditable,
