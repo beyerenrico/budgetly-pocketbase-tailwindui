@@ -32,6 +32,7 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
 			allExpenses: serializeNonPOJOs(expenses),
 			allIncomes: serializeNonPOJOs(incomes)
 		};
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	} catch (err: any) {
 		console.log(err);
 		throw error(err.status, err.message);

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { applyAction, enhance } from '$app/forms';
+	import { applyAction, enhance, type SubmitFunction } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
 	import { ContentWrapper } from '.';
 
@@ -12,7 +12,7 @@
 	let descriptionForm: HTMLFormElement;
 	let loading: boolean = false;
 
-	const onSubmit = () => {
+	const onSubmit: SubmitFunction = () => {
 		loading = true;
 
 		return async ({ result, update }) => {

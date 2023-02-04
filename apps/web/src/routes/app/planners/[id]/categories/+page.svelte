@@ -8,6 +8,7 @@
 		AppTableRowLeading,
 		ContentWrapper
 	} from '$lib/components';
+	import { categorySlideOverOpen } from '$lib/stores';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -49,7 +50,12 @@
 			{#each categories as element}
 				<tr>
 					<AppTableRowLeading>{element.title}</AppTableRowLeading>
-					<AppTableRowAction link="#" identifier={element.id}>Edit</AppTableRowAction>
+					<AppTableRowAction
+						on:click={() => {
+							categorySlideOverOpen.set(true);
+						}}
+						identifier={element.id}>Edit</AppTableRowAction
+					>
 				</tr>
 			{/each}
 		</svelte:fragment>
