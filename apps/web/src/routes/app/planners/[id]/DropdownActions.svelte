@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { AppMenuDropdown } from '$lib/components';
-	import { currentPlanner, plannerSlideOverOpen, plannerSlideOverType } from '$lib/stores';
+	import { plannerSlideOverOpen, plannerSlideOverType } from '$lib/stores';
 	import { MenuItem } from '@rgossiaux/svelte-headlessui';
 	import { EllipsisVertical, Scale, Trash, Wallet } from '@steeze-ui/heroicons';
 	import { Icon } from '@steeze-ui/svelte-icon';
