@@ -88,7 +88,7 @@ export const actions: Actions = {
 	},
 	createExpense: async ({ locals, request }) => {
 		const body = Object.fromEntries(await request.formData()) as {
-			sender: string;
+			name: string;
 			purpose: string;
 			date: string;
 			planner: string;
@@ -98,7 +98,7 @@ export const actions: Actions = {
 
 		try {
 			await locals.pb.collection('expenses').create({
-				sender: body.sender,
+				name: body.name,
 				purpose: body.purpose,
 				date: new Date(body.date).toISOString(),
 				planner: body.planner,
@@ -115,7 +115,7 @@ export const actions: Actions = {
 	},
 	createIncome: async ({ locals, request }) => {
 		const body = Object.fromEntries(await request.formData()) as {
-			sender: string;
+			name: string;
 			purpose: string;
 			date: string;
 			planner: string;
@@ -125,7 +125,7 @@ export const actions: Actions = {
 
 		try {
 			await locals.pb.collection('incomes').create({
-				sender: body.sender,
+				name: body.name,
 				purpose: body.purpose,
 				date: new Date(body.date).toISOString(),
 				planner: body.planner,

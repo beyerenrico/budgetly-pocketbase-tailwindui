@@ -114,7 +114,7 @@
 									{#each allIncomes.filter( (income) => day.isSame(dayjs(income.date), 'day') ) as element}
 										<AppCalendarListItem
 											link="#"
-											headline={element.sender}
+											headline={element.name}
 											subline={element.purpose}
 											amount={element.amount}
 											date={dayjs(day).format('YYYY-MM-DD')}
@@ -128,7 +128,7 @@
 									{#each allExpenses.filter( (expense) => day.isSame(dayjs(expense.date), 'day') ) as element}
 										<AppCalendarListItem
 											link="#"
-											headline={element.sender}
+											headline={element.name}
 											subline={element.purpose}
 											amount={element.amount}
 											date={dayjs(day).format('YYYY-MM-DD')}

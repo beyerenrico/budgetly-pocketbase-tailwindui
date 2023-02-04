@@ -63,7 +63,7 @@
 							{#each incomes as element}
 								<AppCalendarListItem
 									link="#"
-									headline={element.sender}
+									headline={element.name}
 									subline={element.purpose}
 									amount={element.amount}
 									date={element.date}
@@ -93,7 +93,7 @@
 							{#each expenses as element}
 								<AppCalendarListItem
 									link="#"
-									headline={element.sender}
+									headline={element.name}
 									subline={element.purpose}
 									amount={element.amount}
 									date={element.date}

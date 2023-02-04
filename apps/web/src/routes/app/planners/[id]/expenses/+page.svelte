@@ -44,7 +44,7 @@
 	<AppTable>
 		<svelte:fragment slot="headers">
 			<tr>
-				<AppTableHeaderLeading>Sender</AppTableHeaderLeading>
+				<AppTableHeaderLeading>Name</AppTableHeaderLeading>
 				<AppTableHeader>Purpose</AppTableHeader>
 				<AppTableHeader>Booking Date</AppTableHeader>
 				<AppTableHeader>Category</AppTableHeader>
@@ -55,16 +55,16 @@
 		<svelte:fragment slot="rows">
 			{#each allExpenses as transaction}
 				<tr>
-					<AppTableRowLeading>{transaction.sender}</AppTableRowLeading>
+					<AppTableRowLeading>{transaction.name}</AppTableRowLeading>
 					<AppTableRow>{transaction.purpose}</AppTableRow>
 					<AppTableRow>{dayjs(transaction.date).format('DD.MM.YYYY HH:mm')}</AppTableRow>
-					<AppTableRow>{transaction.category}</AppTableRow>
+					<AppTableRow>{transaction.expand.category.title}</AppTableRow>
 					<AppTableRow
 						>{new Intl.NumberFormat('de', { style: 'currency', currency: 'EUR' }).format(
 							-transaction.amount
 						)}</AppTableRow
 					>
-					<AppTableRowAction link="#" identifier={transaction.id}>Edit</AppTableRowAction>
+					<AppTableRowAction identifier={transaction.id}>Edit</AppTableRowAction>
 				</tr>
 			{/each}
 		</svelte:fragment>

@@ -25,10 +25,10 @@ const views: {
 	// 	name: 'week',
 	// 	label: 'Week'
 	// },
-	{
-		name: 'month',
-		label: 'Month'
-	},
+	// {
+	// 	name: 'month',
+	// 	label: 'Month'
+	// },
 	{
 		name: 'year',
 		label: 'Year'

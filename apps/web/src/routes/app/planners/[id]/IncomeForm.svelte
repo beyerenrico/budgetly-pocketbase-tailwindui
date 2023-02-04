@@ -12,7 +12,7 @@
 	});
 </script>
 
-<FormInput label="Sender" type="text" id="sender" />
+<FormInput label="Name" type="text" id="name" />
 <FormInput label="Purpose" type="text" id="purpose" />
 <FormInput label="Booking Date" type="datetime-local" id="date" />
 <FormSelect label="Category" id="category" elements={categories} selected={selectedCategory} />
@@ -31,12 +31,4 @@
 		<span class="text-gray-500 sm:text-sm" id="price-currency">EUR</span>
 	</div>
 </FormInput>
-<button
-	on:click={() => plannerSlideOverOpen.set(false)}
-	formaction="?/createIncome"
-	type="submit"
-	class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
->
-	Save
-</button>
 <input type="hidden" name="planner" value={plannerId} />

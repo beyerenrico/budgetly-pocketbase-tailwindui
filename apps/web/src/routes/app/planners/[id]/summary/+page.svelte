@@ -55,7 +55,7 @@
 		<svelte:fragment slot="rows">
 			{#each allIncomes as transaction}
 				<tr class="bg-green-100">
-					<AppTableRowLeading>{transaction.sender}</AppTableRowLeading>
+					<AppTableRowLeading>{transaction.name}</AppTableRowLeading>
 					<AppTableRow>{transaction.purpose}</AppTableRow>
 					<AppTableRow>{dayjs(transaction.date).format('DD.MM.YYYY HH:mm')}</AppTableRow>
 					<AppTableRow>{transaction.category}</AppTableRow>
