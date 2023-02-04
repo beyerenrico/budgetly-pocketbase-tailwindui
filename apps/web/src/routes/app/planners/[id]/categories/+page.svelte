@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { AppBreadcrumbs } from '$lib/components';
+	import {
+		AppBreadcrumbs,
+		AppTable,
+		AppTableHeaderAction,
+		AppTableHeaderLeading,
+		AppTableRowAction,
+		AppTableRowLeading,
+		ContentWrapper
+	} from '$lib/components';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
@@ -18,6 +26,32 @@
 			href: `/app/planners/${data?.planner?.id}/categories`
 		}
 	];
+
+	$: ({ categories } = data);
 </script>
 
 <AppBreadcrumbs {breadcrumbElements} />
+
+<ContentWrapper
+	headline="Categories"
+	description="All categories in one spot."
+	withAction={true}
+	actionLabel="Add"
+>
+	<AppTable>
+		<svelte:fragment slot="headers">
+			<tr>
+				<AppTableHeaderLeading>Title</AppTableHeaderLeading>
+				<AppTableHeaderAction>Edit</AppTableHeaderAction>
+			</tr>
+		</svelte:fragment>
+		<svelte:fragment slot="rows">
+			{#each categories as element}
+				<tr>
+					<AppTableRowLeading>{element.title}</AppTableRowLeading>
+					<AppTableRowAction link="#" identifier={element.id}>Edit</AppTableRowAction>
+				</tr>
+			{/each}
+		</svelte:fragment>
+	</AppTable>
+</ContentWrapper>
