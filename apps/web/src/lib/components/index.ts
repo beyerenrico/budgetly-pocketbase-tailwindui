@@ -26,6 +26,7 @@ import AppTableRow from './AppTableRow.svelte';
 import AppTableRowAction from './AppTableRowAction.svelte';
 import AppTableRowLeading from './AppTableRowLeading.svelte';
 import AuthFormCard from './AuthFormCard.svelte';
+import ButtonGroup from './ButtonGroup.svelte';
 import ContentWrapper from './ContentWrapper.svelte';
 import ContentWrapperEditable from './ContentWrapperEditable.svelte';
 import FormInput from './FormInput.svelte';
@@ -63,6 +64,7 @@ export {
 	AppTableRowAction,
 	AppTableRowLeading,
 	AuthFormCard,
+	ButtonGroup,
 	ContentWrapper,
 	ContentWrapperEditable,
 	FormInput,
