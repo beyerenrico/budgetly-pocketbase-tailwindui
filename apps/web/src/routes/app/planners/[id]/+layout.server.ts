@@ -14,9 +14,19 @@ export const load: LayoutServerLoad = async ({ locals, params }) => {
 			filter: `planner = "${params.id}"`
 		});
 
+		const expenses = await locals.pb.collection('expenses').getFullList(200, {
+			filter: `planner = "${params.id}"`
+		});
+
+		const incomes = await locals.pb.collection('incomes').getFullList(200, {
+			filter: `planner = "${params.id}"`
+		});
+
 		return {
 			planner: serializeNonPOJOs(planner),
-			categories: serializeNonPOJOs(categories)
+			categories: serializeNonPOJOs(categories),
+			allExpenses: serializeNonPOJOs(expenses),
+			allIncomes: serializeNonPOJOs(incomes)
 		};
 	} catch (err: any) {
 		console.log(err);

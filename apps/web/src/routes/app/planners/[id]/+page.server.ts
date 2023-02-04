@@ -2,28 +2,6 @@ import { error, redirect, type Actions } from '@sveltejs/kit';
 
 import { serializeNonPOJOs } from '$lib/utils';
 
-import type { PageServerLoad } from './$types';
-
-export const load: PageServerLoad = async ({ locals, params }) => {
-	try {
-		const expenses = await locals.pb.collection('expenses').getFullList(200, {
-			filter: `planner = "${params.id}"`
-		});
-
-		const incomes = await locals.pb.collection('incomes').getFullList(200, {
-			filter: `planner = "${params.id}"`
-		});
-
-		return {
-			allExpenses: serializeNonPOJOs(expenses),
-			allIncomes: serializeNonPOJOs(incomes)
-		};
-	} catch (err: any) {
-		console.log(err);
-		throw error(err.status, err.message);
-	}
-};
-
 export const actions: Actions = {
 	updateHeadline: async ({ request, locals, params }) => {
 		if (!locals.user) {
