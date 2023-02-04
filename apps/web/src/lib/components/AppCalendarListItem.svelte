@@ -32,7 +32,7 @@
 			<p
 				class={classNames(type === 'income' ? 'text-green-800' : 'text-red-800', 'text-[1rem] p-2')}
 			>
-				+ {new Intl.NumberFormat('de-DE', {
+				{type === 'income' ? '+' : '-'}{new Intl.NumberFormat('de-DE', {
 					style: 'currency',
 					currency: 'EUR'
 				}).format(amount)}
