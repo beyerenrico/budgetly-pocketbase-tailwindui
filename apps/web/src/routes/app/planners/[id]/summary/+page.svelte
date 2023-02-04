@@ -44,7 +44,7 @@
 	<AppTable>
 		<svelte:fragment slot="headers">
 			<tr>
-				<AppTableHeaderLeading>Sender</AppTableHeaderLeading>
+				<AppTableHeaderLeading>Name</AppTableHeaderLeading>
 				<AppTableHeader>Purpose</AppTableHeader>
 				<AppTableHeader>Booking Date</AppTableHeader>
 				<AppTableHeader>Category</AppTableHeader>
@@ -81,15 +81,7 @@
 					<AppTableRowAction link="#" identifier={transaction.id}>Edit</AppTableRowAction>
 				</tr>
 			{/each}
-			<tr class="bg-gray-200">
-				<AppTableRowLeading />
-				<AppTableRow />
-				<AppTableRow />
-				<AppTableRow />
-				<AppTableRow />
-				<AppTableRow />
-			</tr>
-			<tr>
+			<tr class="bg-gray-100">
 				<AppTableRowLeading bold={true}>Balance</AppTableRowLeading>
 				<AppTableRow />
 				<AppTableRow />
