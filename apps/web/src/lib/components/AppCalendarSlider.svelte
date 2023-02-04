@@ -50,8 +50,12 @@
 			{#each week as day}
 				<button
 					type="button"
-					class="py-2 hover:bg-gray-100 focus:z-10 
-						{!day.isSame(currentDay, 'month') ? 'bg-gray-50 text-gray-400' : 'bg-white text-gray-900'}"
+					class={classNames(
+						!day.isSame(currentDay, 'month')
+							? 'bg-gray-50 text-gray-400'
+							: 'bg-white text-gray-900',
+						'py-2 hover:bg-gray-100 focus:z-10 relative'
+					)}
 					on:click={() => {
 						currentDate.set(day);
 						calendarView.set('day');
@@ -65,7 +69,7 @@
 							'mx-auto flex h-7 w-7 items-center justify-center rounded-full'
 						)}>{day.format('D')}</time
 					>
-					<div class="w-full flex justify-center gap-1">
+					<div class="w-full flex justify-start gap-1 absolute bottom-[2px] left-[2px]">
 						{#if allExpenses.filter((expense) => day.isSame(dayjs(expense.date), 'day')).length}
 							<span class="mt-2 rounded-full h-[6px] w-[6px] bg-red-300" />
 						{/if}
