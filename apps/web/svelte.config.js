@@ -16,6 +16,9 @@ const config = {
 
 	kit: {
 		adapter: adapter()
+	},
+	build: {
+		target: 'esnext'
 	}
 };
 
