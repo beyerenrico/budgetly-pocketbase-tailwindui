@@ -22,7 +22,13 @@ export const currentDate = createDateStore();
 export const calendarView = writable<'day' | 'week' | 'month' | 'year'>('year');
 export const currentPlanner = writable<string | undefined>(undefined);
 export const offCanvasMenuOpen = writable<boolean>(false);
+export const recentlyCreatedCategory = writable<Record>(undefined);
+
+export const categorySlideOverOpen = writable<boolean>(false);
+export const categorySlideOverEditMode = writable<boolean>(false);
+export const categorySlideOverRecord = writable<Record>(undefined);
+
 export const plannerSlideOverOpen = writable<boolean>(false);
 export const plannerSlideOverType = writable<'expense' | 'income'>('expense');
-export const categorySlideOverOpen = writable<boolean>(false);
-export const recentlyCreatedCategory = writable<Record>(undefined);
+export const plannerSlideOverEditMode = writable<boolean>(false);
+export const plannerSlideOverRecord = writable<Record>(undefined);

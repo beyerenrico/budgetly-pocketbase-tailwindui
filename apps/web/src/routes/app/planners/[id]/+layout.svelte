@@ -6,13 +6,17 @@
 		currentPlanner,
 		plannerSlideOverOpen,
 		plannerSlideOverType,
-		recentlyCreatedCategory
+		recentlyCreatedCategory,
+		categorySlideOverEditMode,
+		categorySlideOverRecord,
+		plannerSlideOverEditMode,
+		plannerSlideOverRecord
 	} from '$lib/stores';
 	import { page } from '$app/stores';
 	import type { Record } from 'pocketbase';
 	import { AppSlideOver } from '$lib/components';
-	import ExpenseForm from './ExpenseForm.svelte';
-	import IncomeForm from './IncomeForm.svelte';
+	import TransactionForm from './TransactionForm.svelte';
+
 	import CategoryForm from './CategoryForm.svelte';
 	import { captilizeFirstLetter } from '$lib/utils';
 	import { browser } from '$app/environment';
@@ -29,6 +33,12 @@
 	let loading = false;
 	let currentCategory: Record['id'] | undefined;
 
+	let isEditingCategory: boolean = false;
+	let editCategory: Record | undefined = undefined;
+
+	let isEditingTransaction: boolean = false;
+	let editTransaction: Record | undefined = undefined;
+
 	currentPlanner.set($page.params.id);
 
 	plannerSlideOverType.subscribe((value) => {
@@ -37,6 +47,22 @@
 
 	recentlyCreatedCategory.subscribe((value) => {
 		currentCategory = value?.id ?? undefined;
+	});
+
+	categorySlideOverEditMode.subscribe((value) => {
+		isEditingCategory = value;
+	});
+
+	categorySlideOverRecord.subscribe((value) => {
+		editCategory = value;
+	});
+
+	plannerSlideOverEditMode.subscribe((value) => {
+		isEditingTransaction = value;
+	});
+
+	plannerSlideOverRecord.subscribe((value) => {
+		editTransaction = value;
 	});
 
 	$: ({ categories } = data);
@@ -89,20 +115,20 @@
 
 <AppSlideOver
 	storeElement={plannerSlideOverOpen}
-	headline="New {captilizeFirstLetter(currentType)}"
+	headline={isEditingTransaction
+		? `Edit ${captilizeFirstLetter(currentType)}`
+		: `New ${captilizeFirstLetter(currentType)}`}
+	action={isEditingTransaction
+		? `?/update${captilizeFirstLetter(currentType)}`
+		: `?/create${captilizeFirstLetter(currentType)}`}
 	enhancementFunction={enhancePlannerSlideOver}
-	action="?/create{captilizeFirstLetter(currentType)}"
 >
-	{#if currentType === 'expense'}
-		<ExpenseForm {categories} selectedCategory={form?.category?.id} />
-	{:else if currentType === 'income'}
-		<IncomeForm {categories} selectedCategory={form?.category?.id} />
-	{/if}
+	<TransactionForm {categories} selectedCategory={form?.category?.id} />
 </AppSlideOver>
 <AppSlideOver
 	storeElement={categorySlideOverOpen}
-	headline="New category"
-	action="?/createCategory"
+	headline={isEditingCategory ? 'Edit Category' : 'New Category'}
+	action={isEditingCategory ? '?/updateCategory' : '?/createCategory'}
 >
 	<CategoryForm />
 </AppSlideOver>

@@ -1,13 +1,27 @@
-<script>
+<script lang="ts">
 	import { FormInput } from '$lib/components';
-	import { categorySlideOverOpen } from '$lib/stores';
+	import { categorySlideOverEditMode, categorySlideOverRecord } from '$lib/stores';
+	import type { Record } from 'pocketbase';
+
+	let isEditing: boolean = false;
+	let editRecord: Record | undefined = undefined;
+
+	categorySlideOverEditMode.subscribe((value) => {
+		isEditing = value;
+	});
+
+	categorySlideOverRecord.subscribe((value) => {
+		editRecord = value;
+	});
 </script>
 
-<FormInput label="Title" type="text" id="title" placeholder="New category" />
-<button
-	on:click={() => categorySlideOverOpen.set(false)}
-	type="submit"
-	class="inline-flex items-center justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
->
-	Save
-</button>
+<FormInput
+	label="Title"
+	type="text"
+	id="title"
+	placeholder={isEditing && editRecord ? editRecord.title : 'New category'}
+	value={isEditing && editRecord ? editRecord.title : ''}
+/>
+{#if isEditing && editRecord}
+	<input type="hidden" name="id" value={editRecord.id} />
+{/if}
