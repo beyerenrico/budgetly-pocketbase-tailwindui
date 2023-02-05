@@ -1,12 +1,17 @@
 import { redirect, type Actions } from '@sveltejs/kit';
+
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ locals }) => {
-	const { authProviders } = await locals.pb.collection('users').listAuthMethods();
+	try {
+		const { authProviders } = await locals.pb.collection('users').listAuthMethods();
 
-	return {
-		authProviders
-	};
+		return {
+			authProviders: authProviders ?? []
+		};
+	} catch (err: any) {
+		console.log('Error: ', err);
+	}
 };
 
 export const actions: Actions = {
